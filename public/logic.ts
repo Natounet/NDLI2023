@@ -111,14 +111,14 @@ async function creerCarte(): Promise<Carte[]> {
 
 function partieTermine(): boolean {
     if (industrie < 100 && transport < 100 && agriculture < 100 && logement < 100) {
-        console.log("tkt1")
+        
             if (carteJoues.length != allCartes.length) {
-                console.log("tkt2")
-
+                console.log("Partie non terminé")
                 return false;
             }
         }
-    
+        
+    console.log("Partie terminé")
     return true;
 }
 
@@ -149,6 +149,7 @@ function genererAffichageCarte(carte: Carte): string {
 async function main() {
 
     allCartes = await creerCarte()
+    console.log(allCartes)
 
     function boucle(){
         let carteActuelle = carteSuivante();
@@ -184,6 +185,7 @@ async function main() {
             let direction = endX > startX ? 'right' : 'left';
     
             if (direction == 'right') {
+                console.log(carteActuelle)
                 carteActuelle.boutonVert();
                 // add translation to go outside of the screen
                 let card = div.getElementsByTagName("div")[0];
@@ -198,6 +200,7 @@ async function main() {
                 }, 1000);
             
             }
+
             else {
                 carteActuelle.boutonRouge();
                 // add translation to go outside of the screen
@@ -213,9 +216,10 @@ async function main() {
                 }, 1000);
             }
 
-            if(partieTermine()){
+            if(!partieTermine()){
                 boucle();
             }
+
         });
     
         function rotateCard(event: MouseEvent) {
@@ -227,6 +231,7 @@ async function main() {
         }
     }
 
+    boucle();
 
 
    
