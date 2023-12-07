@@ -7,16 +7,38 @@ let chauffage = 0;
 let carteJoues: number[] = [];
 let allCartes: Carte[] = [];
 
+// Main logic
+
+while (!partieTermine()) {
+
+
+}
+
+
+function partieTermine(): boolean {
+    if (temperature <= 10 && temperature <= -10) {
+        if (industrie < 100 && transport < 100 && agriculture < 100 && chauffage < 100) {
+            if (carteJoues.length != allCartes.length) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+
+
 function carteSuivante(): Carte {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
     let carte: Carte;
 
-    while(true){
+    while (true) {
 
-        let random:number = Math.floor(Math.random() * allCartes.length);
+        let random: number = Math.floor(Math.random() * allCartes.length);
 
         carte = allCartes[random];
-        if(!(carte.id in carteJoues) && carte.estJouable()){
+        if (!(carte.id in carteJoues) && carte.estJouable()) {
             return carte;
         }
 
@@ -47,18 +69,18 @@ class Carte {
         this.source = source;
     }
 
-    jouerCarte(){
+    jouerCarte() {
 
         // Vérification si les prérequis sont satisfait.
-        if(this.estJouable()){
+        if (this.estJouable()) {
             agriculture += this.effets.agriculture;
             industrie += this.effets.industrie;
             transport += this.effets.transport;
             chauffage += this.effets.chauffage;
-            
+
             carteJoues.push(this.id);
         }
-        
+
 
     }
 
@@ -67,11 +89,11 @@ class Carte {
         this.prerequis.forEach(pr => {
 
             // Prérequis non satisfait
-            if(!(pr in carteJoues)){
+            if (!(pr in carteJoues)) {
                 return false;
             }
 
-            
+
         });
 
         return true;

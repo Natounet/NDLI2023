@@ -5,6 +5,19 @@ var agriculture = 0;
 var chauffage = 0;
 var carteJoues = [];
 var allCartes = [];
+// Main logic
+while (!partieTermine()) {
+}
+function partieTermine() {
+    if (temperature <= 10 && temperature <= -10) {
+        if (industrie < 100 && transport < 100 && agriculture < 100 && chauffage < 100) {
+            if (carteJoues.length != allCartes.length) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
     var carte;
