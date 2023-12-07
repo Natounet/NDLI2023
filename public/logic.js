@@ -197,6 +197,10 @@ function main() {
                 case 1:
                     allCartes = _a.sent();
                     console.log(allCartes);
+                    if (partieTermine()) {
+                        console.log("Game over, no new cards will be generated.");
+                        return [2 /*return*/];
+                    }
                     boucle();
                     return [2 /*return*/];
             }

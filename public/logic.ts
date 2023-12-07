@@ -231,6 +231,11 @@ async function main() {
         }
     }
 
+    if (partieTermine()) {
+        console.log("Game over, no new cards will be generated.");
+        return;
+    }
+
     boucle();
 
 
