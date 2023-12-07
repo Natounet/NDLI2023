@@ -1,9 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var temperature = 0;
 var industrie = 0;
 var transport = 0;
 var agriculture = 0;
 var chauffage = 0;
 var carteJoues = [];
+var allCartes = [];
 var Carte = /** @class */ (function () {
     function Carte(id, nom, description, effets, prerequis) {
         this.id = id;

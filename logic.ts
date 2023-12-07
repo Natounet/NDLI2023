@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 let temperature = 0;
 let industrie = 0;
 let transport = 0;
@@ -5,6 +7,7 @@ let agriculture = 0;
 let chauffage = 0;
 
 let carteJoues: number[] = [];
+let allCartes: Carte[] = [];
 
 type effet = {
     industrie: number;
