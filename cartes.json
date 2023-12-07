@@ -1,54 +1,138 @@
 {
     "0": {
         "id": 0,
-        "nom": "JardinCollectif",
-        "Description": "Vous mettez en place une loi pour inciter les habitants à faire des jardins collectifs",
-        "Effets": {
-            "industrie": 0,
-            "transport": 0,
-            "agriculture": -2,
-            "logement": -2
+        "nom": "Nouvel aéroport",
+        "description": "La France attire des touristes ! On va construire un aéroport Charles de Gaulles 2 pour les accueillir.",
+        "effets": {
+            "industrie": 5,
+            "transport": 10,
+            "agriculture": 0,
+            "logement": 0
         },
         "prerequis": [],
         "source": "link"
     },
     "1": {
         "id": 1,
-        "nom": "NuclearToWind",
-        "Description": "Vous remplacez une centrale nucléaire par 150 éoliennes",
-        "Effets": {
+        "nom": "Fini le nucléaire ! ",
+        "description": "Vous remplacez une centrale nucléaire par 1500 éoliennes.",
+        "effets": {
             "industrie": 4,
             "transport": 0,
             "agriculture": 0,
-            "logement": 6
+            "logement": 8
         },
         "prerequis": [],
         "source": "link"
     },
     "2": {
         "id": 2,
-        "nom": "VillePietonne",
-        "Description": "Vous mettez en place une loi pour interdire les voitures dans les grandes villes",
-        "Effets": {
+        "nom": "Ville piétonne",
+        "description": "Vous mettez en place une loi pour interdire les voitures dans les grandes villes.",
+        "effets": {
             "industrie": 0,
-            "transport": 0,
-            "agriculture": -2,
-            "logement": -2
+            "transport": -4,
+            "agriculture": 0,
+            "logement": 0
         },
         "prerequis": [],
         "source": "link"
     },
     "3": {
         "id": 3,
-        "nom": "BaiseTaMere",
-        "Description": "Vous baisez la mere de trump",
+        "nom": "Les enfants aussi !",
+        "Description": "Chaque nouvel élève en 6ème plante un arbre au cours de l'année.",
         "Effets": {
             "industrie": 0,
             "transport": 0,
-            "agriculture": -2,
-            "logement": -2
+            "agriculture": 0,
+            "logement": 0
         },
         "prerequis": [],
         "source": "link"
+    },
+    "4": {
+        "id": 4,
+        "nom": "Planter un arbre, puis deux...",
+        "description": "On va planter 1000 arbres dans les grandes villes.",
+        "effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "https://www.greenpeace.fr/est-ce-que-planter-des-arbres-sauvera-le-climat/",
+        "info": "L'impact sur la concentration est très négligeable à court terme"
+    },
+    "5": {
+        "id": 5,
+        "nom": "Planter un bambou, puis deux...",
+        "description": "On va planter des bambous dans les grandes villes.",
+        "effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "https://www.francetvinfo.fr/replay-radio/le-billet-sciences-du-week-end/le-billet-sciences-le-bambou-un-materiau-ancestral-et-ecologique-qui-revient-en-force_4095253.html",
+        "info": "Le bambou est une plante qui pousse très vite et qui absorbe 30% de CO2 de plus que les arbres."
+    },
+    "6": {
+        "id": 6,
+        "nom": "On travaille les jambes !",
+        "description": "Vous instaurez une prime pour l'achat d'un vélo électrique",
+        "effets": {
+            "industrie": 5,
+            "transport": -2,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "Un vélo électrique est une bonne alternative aux voiture durant sa vie, mais sa conception et son recyclage sont fortement émetteurs."
+    },
+    "7": {
+        "id": 7,
+        "nom": "Ça roule !",
+        "description": "Vous instaurez une prime pour l'achat d'une voiture électrique",
+        "effets": {
+            "industrie": 6,
+            "transport": -4,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "Une voiture électrique est une bonne alternative aux voiture thermiques durant sa vie, mais sa conception et son recyclage sont fortement émetteurs."
+    },
+    "8": {
+        "id": 8,
+        "nom": "Géopuits",
+        "description": "Vous encouragez vos citoyens à construire des puits canadiens",
+        "effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": -3
+        },
+        "prerequis": [],
+        "source": "https://lepuitscanadien.fr/",
+        "info": "Un puit canadien permet d'utiliser la géothermie pour chauffer ou refroidir les logements en hiver ou en été"
+    },
+    "9": {
+        "id": 9,
+        "nom": "Pour la science !",
+        "description": "Vous financez de nombreux scientifiques pour trouver un moyen de synthétiser le charbon, afin d'en faire une énergie renouvelable",
+        "effets": {
+            "industrie": 5,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": 5
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "Le problème des usines à charbon vient aussi du CO2 qu'elles émettent..."
     }
 }
