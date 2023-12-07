@@ -68,6 +68,7 @@ body {
 h1 {
     color: white;
     text-align: center;
+    margin: 1%;
 }
 
 body {
@@ -119,14 +120,34 @@ div.carte_interieur {
 
 .svg-container{
     text-align: center;
-    position: relative;
-    display: flex;
-    padding: 1%;
-    justify-content: center;
-    align-items: center;
     background-color: white;
     width: 200px;
     height: 200px;
+    border-radius: 20px;
+    padding: 1%;
+    border: white solid 5px ;
+}
+
+.svg-container:hover{
+    border: #3fe97d solid 5px;
+    cursor: pointer;
+}
+
+.top-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+.bottom-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    font-weight: bold;
 }
 
 svg{
@@ -134,7 +155,6 @@ svg{
     height: 100px;
     position: absolute;
     fill: none; /* Set fill to none to make the border visible */
-    flex-direction: column;
 }
 
 svg.first{
