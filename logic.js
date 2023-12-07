@@ -114,17 +114,19 @@ function carteSuivante() {
     }
 }
 function genererAffichageCarte(carte) {
-    return "<div class=\"carte\"><h3 class=\"carte\">".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p class =\"carte\"").concat(carte.description, "</p></div></div>");
+    return "<div class=\"carte\"><h3 class=\"carte\">".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p class =\"carte\">").concat(carte.description, "</p></div></div>");
 }
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var allCartes;
+        var allCartes, carteElement;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
                     allCartes = _a.sent();
-                    genererAffichageCarte(allCartes[0]);
+                    carteElement = document.createElement('div');
+                    carteElement.innerHTML = genererAffichageCarte(allCartes[0]);
+                    document.body.appendChild(carteElement);
                     return [2 /*return*/];
             }
         });

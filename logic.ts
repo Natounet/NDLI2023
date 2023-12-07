@@ -34,8 +34,8 @@ class Carte {
         this.info = info;
     }
 
-    
-    
+
+
 
     jouerCarte() {
 
@@ -118,17 +118,17 @@ function carteSuivante(): Carte {
 }
 
 function genererAffichageCarte(carte: Carte): string {
-
-    return `<div class="carte"><h3 class="carte">${carte.nom}</h3><div class="carte_interieur"><p class ="carte"${carte.description}</p></div></div>`
-
+    return `<div class="carte"><h3 class="carte">${carte.nom}</h3><div class="carte_interieur"><p class ="carte">${carte.description}</p></div></div>`;
 }
 
 async function main() {
     let allCartes: Carte[] = await creerCarte();
-    genererAffichageCarte(allCartes[0])
+    const carteElement = document.createElement('div');
+    carteElement.innerHTML = genererAffichageCarte(allCartes[0]);
+    document.body.appendChild(carteElement);
 }
 
-main()
+main();
 
 
 
