@@ -23,7 +23,7 @@ function creerCarte(){
         let objArray = JSON.parse(data);
         let cartes = Object.values(objArray);
         // Map each object to a new Carte instance and push them to allCartes
-        cartes.forEach(obj => allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info)));
+        cartes.forEach((obj:any) => allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info)));
     
         // Now allCartes array is filled with 'Carte' objects
         console.log(allCartes);
