@@ -111,7 +111,10 @@ async function creerCarte(): Promise<Carte[]> {
 
 function partieTermine(): boolean {
     if (industrie < 100 && transport < 100 && agriculture < 100 && logement < 100) {
+        console.log("tkt1")
             if (carteJoues.length != allCartes.length) {
+                console.log("tkt2")
+
                 return false;
             }
         }
