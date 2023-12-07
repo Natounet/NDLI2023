@@ -4,6 +4,7 @@ var transport = 0;
 var agriculture = 0;
 var chauffage = 0;
 var carteJoues = [];
+var allCartes = [];
 var Carte = /** @class */ (function () {
     function Carte(id, nom, description, effets, prerequis) {
         this.id = id;

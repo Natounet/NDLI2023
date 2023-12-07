@@ -5,6 +5,7 @@ let agriculture = 0;
 let chauffage = 0;
 
 let carteJoues: number[] = [];
+let allCartes: Carte[] = [];
 
 type effet = {
     industrie: number;
