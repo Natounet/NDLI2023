@@ -5,6 +5,8 @@ let agriculture = 0;
 let logement = 0;
 
 let carteJoues: number[] = [];
+let carteActuelle: Carte;
+let boutonVertRestant: number = 10;
 
 // Main logic
 
@@ -37,14 +39,35 @@ class Carte {
 
 
 
-    jouerCarte() {
+    boutonVert() {
+
+        if (boutonVertRestant > 0){
+            // Vérification si les prérequis sont satisfait.
+            if (this.estJouable()) {
+                agriculture += this.effets.agriculture;
+                industrie += this.effets.industrie;
+                transport += this.effets.transport;
+                logement += this.effets.logement;
+
+                carteJoues.push(this.id);
+            }
+
+            boutonVertRestant -= 1;
+        }
+        
+        
+
+
+    }
+
+    boutonRouge() {
 
         // Vérification si les prérequis sont satisfait.
         if (this.estJouable()) {
-            agriculture += this.effets.agriculture;
-            industrie += this.effets.industrie;
-            transport += this.effets.transport;
-            logement += this.effets.logement;
+            agriculture -= this.effets.agriculture;
+            industrie -= this.effets.industrie;
+            transport -= this.effets.transport;
+            logement -= this.effets.logement;
 
             carteJoues.push(this.id);
         }
@@ -122,6 +145,7 @@ function genererAffichageCarte(carte: Carte): string {
 }
 
 async function main() {
+    let carteActuelle = carteSuivante();
 
 }
 

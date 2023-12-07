@@ -40,6 +40,8 @@ var transport = 0;
 var agriculture = 0;
 var logement = 0;
 var carteJoues = [];
+var carteActuelle;
+var boutonVertRestant = 10;
 var Carte = /** @class */ (function () {
     function Carte(id, nom, description, effets, prerequis, source, info) {
         this.id = id;
@@ -50,13 +52,26 @@ var Carte = /** @class */ (function () {
         this.source = source;
         this.info = info;
     }
-    Carte.prototype.jouerCarte = function () {
+    Carte.prototype.boutonVert = function () {
+        if (boutonVertRestant > 0) {
+            // Vérification si les prérequis sont satisfait.
+            if (this.estJouable()) {
+                agriculture += this.effets.agriculture;
+                industrie += this.effets.industrie;
+                transport += this.effets.transport;
+                logement += this.effets.logement;
+                carteJoues.push(this.id);
+            }
+            boutonVertRestant -= 1;
+        }
+    };
+    Carte.prototype.boutonRouge = function () {
         // Vérification si les prérequis sont satisfait.
         if (this.estJouable()) {
-            agriculture += this.effets.agriculture;
-            industrie += this.effets.industrie;
-            transport += this.effets.transport;
-            logement += this.effets.logement;
+            agriculture -= this.effets.agriculture;
+            industrie -= this.effets.industrie;
+            transport -= this.effets.transport;
+            logement -= this.effets.logement;
             carteJoues.push(this.id);
         }
     };
@@ -118,7 +133,9 @@ function genererAffichageCarte(carte) {
 }
 function main() {
     return __awaiter(this, void 0, void 0, function () {
+        var carteActuelle;
         return __generator(this, function (_a) {
+            carteActuelle = carteSuivante();
             return [2 /*return*/];
         });
     });
