@@ -145,11 +145,12 @@ function genererAffichageCarte(carte: Carte): string {
     return `<div class="carte"><h3>${carte.nom}</h3><div class="carte_interieur"><p>${carte.description}</p></div></div>`;
 }
 
+
 async function main() {
+
     allCartes = await creerCarte()
 
-    while(!partieTermine()) {
-        
+    function boucle(){
         let carteActuelle = carteSuivante();
         let cartehtml = genererAffichageCarte(carteActuelle)
         let div = document.createElement('div');
@@ -159,6 +160,7 @@ async function main() {
     
     
     
+        
     
         div.addEventListener('mousedown', (event) => {
             // Listen for mousemove events on the document
@@ -210,6 +212,10 @@ async function main() {
                     div.remove();
                 }, 1000);
             }
+
+            if(partieTermine()){
+                boucle();
+            }
         });
     
         function rotateCard(event: MouseEvent) {
@@ -220,6 +226,7 @@ async function main() {
             div.getElementsByTagName("div")[0].style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
         }
     }
+
 
 
    
