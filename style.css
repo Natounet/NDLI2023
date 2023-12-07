@@ -25,3 +25,28 @@ div.carte_interieur {
     background-color: #3fe97d;
     overflow-wrap: break-word;
 }
+
+.jauge{
+    text-align: center;
+}
+
+.svg-container{
+    margin-right: 10%;
+    position: relative;
+    display: inline-block;
+}
+
+svg{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+svg.first{
+    fill: #3fe97d;
+    clip-path: polygon(0 25%, 100% 25%, 100% 100%, 0 100%);
+}
+
+svg.second{
+    fill: transparent;
+}
