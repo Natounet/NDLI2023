@@ -41,8 +41,8 @@
     "3": {
         "id": 3,
         "nom": "Les enfants aussi !",
-        "Description": "Chaque nouvel élève en 6ème plante un arbre au cours de l'année.",
-        "Effets": {
+        "description": "Chaque nouvel élève en 6ème plante un arbre au cours de l'année.",
+        "effets": {
             "industrie": 0,
             "transport": 0,
             "agriculture": 0,

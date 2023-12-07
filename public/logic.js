@@ -108,12 +108,12 @@ function creerCarte() {
 }
 function partieTermine() {
     if (industrie < 100 && transport < 100 && agriculture < 100 && logement < 100) {
-        console.log("tkt1");
         if (carteJoues.length != allCartes.length) {
-            console.log("tkt2");
+            console.log("Partie non terminé");
             return false;
         }
     }
+    console.log("Partie terminé");
     return true;
 }
 function carteSuivante() {
@@ -156,6 +156,7 @@ function main() {
                 var endX = event.clientX;
                 var direction = endX > startX ? 'right' : 'left';
                 if (direction == 'right') {
+                    console.log(carteActuelle);
                     carteActuelle.boutonVert();
                     // add translation to go outside of the screen
                     var card = div.getElementsByTagName("div")[0];
@@ -179,7 +180,7 @@ function main() {
                         div.remove();
                     }, 1000);
                 }
-                if (partieTermine()) {
+                if (!partieTermine()) {
                     boucle();
                 }
             });
@@ -195,6 +196,8 @@ function main() {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
                     allCartes = _a.sent();
+                    console.log(allCartes);
+                    boucle();
                     return [2 /*return*/];
             }
         });
