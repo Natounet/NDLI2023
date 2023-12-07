@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 let temperature = 0;
 let industrie = 0;
 let transport = 0;
@@ -9,10 +10,28 @@ let allCartes: Carte[] = [];
 
 // Main logic
 
-while (!partieTermine()) {
+creerCarte();
 
+function creerCarte(){
+    fs.readFile('cartes.json','utf-8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+    
+        // Parse the JSON string into an array of objects
+        let objArray = JSON.parse(data);
+        let cartes = Object.values(objArray);
+        // Map each object to a new Carte instance and push them to allCartes
+        cartes.forEach(obj => allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info)));
+    
+        // Now allCartes array is filled with 'Carte' objects
+        console.log(allCartes);
+    }
 
-}
+)}
+
+console.log(allCartes)
 
 
 function partieTermine(): boolean {
@@ -59,14 +78,16 @@ class Carte {
     effets: effet;
     prerequis: number[];
     source: string;
+    info: string;
 
-    constructor(id: number, nom: string, description: string, effets: effet, prerequis: number[], source: string) {
+    constructor(id: number, nom: string, description: string, effets: effet, prerequis: number[], source: string, info:string) {
         this.id = id;
         this.nom = nom;
         this.description = description;
         this.effets = effets;
         this.prerequis = prerequis;
         this.source = source;
+        this.info = info;
     }
 
     jouerCarte() {
