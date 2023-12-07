@@ -118,17 +118,8 @@ function genererAffichageCarte(carte) {
 }
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var allCartes, carteElement;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, creerCarte()];
-                case 1:
-                    allCartes = _a.sent();
-                    carteElement = document.createElement('div');
-                    carteElement.innerHTML = genererAffichageCarte(allCartes[0]);
-                    document.body.appendChild(carteElement);
-                    return [2 /*return*/];
-            }
+            return [2 /*return*/];
         });
     });
 }
