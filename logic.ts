@@ -74,7 +74,7 @@ let allCartes: Carte[] = [];
 async function creerCarte(): Promise<Carte[]> {
     let allCartes: Carte[] = [];
 
-    const response = await fetch("http://127.0.0.1:8000/cartes.json");
+    const response = await fetch("/cartes.json");
 
     let data = await response.json();
     let cartes = Object.values(data);

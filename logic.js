@@ -79,7 +79,7 @@ function creerCarte() {
             switch (_a.label) {
                 case 0:
                     allCartes = [];
-                    return [4 /*yield*/, fetch("http://127.0.0.1:8000/cartes.json")];
+                    return [4 /*yield*/, fetch("/cartes.json")];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
