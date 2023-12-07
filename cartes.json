@@ -1,0 +1,54 @@
+{
+    "0": {
+        "id": 0,
+        "nom": "JardinCollectif",
+        "Description": "Vous mettez en place une loi pour inciter les habitants à faire des jardins collectifs",
+        "Effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": -2,
+            "logement": -2
+        },
+        "prerequis": [],
+        "source": "link"
+    },
+    "1": {
+        "id": 1,
+        "nom": "NuclearToWind",
+        "Description": "Vous remplacez une centrale nucléaire par 150 éoliennes",
+        "Effets": {
+            "industrie": 4,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": 6
+        },
+        "prerequis": [],
+        "source": "link"
+    },
+    "2": {
+        "id": 2,
+        "nom": "VillePietonne",
+        "Description": "Vous mettez en place une loi pour interdire les voitures dans les grandes villes",
+        "Effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": -2,
+            "logement": -2
+        },
+        "prerequis": [],
+        "source": "link"
+    },
+    "3": {
+        "id": 3,
+        "nom": "BaiseTaMere",
+        "Description": "Vous baisez la mere de trump",
+        "Effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": -2,
+            "logement": -2
+        },
+        "prerequis": [],
+        "source": "link"
+    }
+}
