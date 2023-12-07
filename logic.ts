@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 let temperature = 0;
 let industrie = 0;
 let transport = 0;
@@ -35,6 +34,9 @@ class Carte {
         this.info = info;
     }
 
+    
+    
+
     jouerCarte() {
 
         // Vérification si les prérequis sont satisfait.
@@ -65,15 +67,17 @@ class Carte {
         return true;
     }
 }
-let allCartes: Carte[] = creerCarte();
+let allCartes: Carte[] = [];
 
 
-function creerCarte(): Carte[] {
+
+async function creerCarte(): Promise<Carte[]> {
     let allCartes: Carte[] = [];
 
-    let data = fs.readFileSync('cartes.json', 'utf-8');
-    let objArray = JSON.parse(data);
-    let cartes = Object.values(objArray);
+    const response = await fetch("http://127.0.0.1:8000/cartes.json");
+
+    let data = await response.json();
+    let cartes = Object.values(data);
 
     cartes.forEach((obj: any) => allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info)));
 
@@ -113,9 +117,15 @@ function carteSuivante(): Carte {
     }
 }
 
-function main() {
+function genererAffichageCarte(carte: Carte): string {
 
+    return `<div class="carte"><h3 class="carte">${carte.nom}</h3><div class="carte_interieur"><p class ="carte"${carte.description}</p></div></div>`
 
+}
+
+async function main() {
+    let allCartes: Carte[] = await creerCarte();
+    genererAffichageCarte(allCartes[0])
 }
 
 main()
