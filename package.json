@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "npx tsc -w logic.ts"
+    "dev": "npx tsc -w public/logic.ts"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
