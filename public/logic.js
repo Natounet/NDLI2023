@@ -34,7 +34,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var temperature = 0;
 var industrie = 0;
 var transport = 0;
 var agriculture = 0;
@@ -94,7 +93,7 @@ function creerCarte() {
             switch (_a.label) {
                 case 0:
                     allCartes = [];
-                    return [4 /*yield*/, fetch("/cartes.json")];
+                    return [4 /*yield*/, fetch("cartes.json")];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -108,11 +107,9 @@ function creerCarte() {
     });
 }
 function partieTermine() {
-    if (temperature <= 10 && temperature <= -10) {
-        if (industrie < 100 && transport < 100 && agriculture < 100 && logement < 100) {
-            if (carteJoues.length != allCartes.length) {
-                return false;
-            }
+    if (industrie < 100 && transport < 100 && agriculture < 100 && logement < 100) {
+        if (carteJoues.length != allCartes.length) {
+            return false;
         }
     }
     return true;
@@ -129,14 +126,76 @@ function carteSuivante() {
     }
 }
 function genererAffichageCarte(carte) {
-    return "<div class=\"carte\"><h3 class=\"carte\">".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p class =\"carte\">").concat(carte.description, "</p></div></div>");
+    return "<div class=\"carte\"><h3>".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p>").concat(carte.description, "</p></div></div>");
 }
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle;
+        var _loop_1;
         return __generator(this, function (_a) {
-            carteActuelle = carteSuivante();
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, creerCarte()];
+                case 1:
+                    allCartes = _a.sent();
+                    _loop_1 = function () {
+                        var carteActuelle_1 = carteSuivante();
+                        var cartehtml = genererAffichageCarte(carteActuelle_1);
+                        var div = document.createElement('div');
+                        div.innerHTML = cartehtml;
+                        document.body.appendChild(div);
+                        div.addEventListener('mousedown', function (event) {
+                            // Listen for mousemove events on the document
+                            document.addEventListener('mousemove', rotateCard);
+                        });
+                        // Listen for mouseup events on the document
+                        var startX;
+                        document.addEventListener('mousedown', function (event) {
+                            startX = event.clientX;
+                            // Listen for mousemove events on the document
+                            document.addEventListener('mousemove', rotateCard);
+                        });
+                        document.addEventListener('mouseup', function (event) {
+                            // Remove the mousemove event listener
+                            document.removeEventListener('mousemove', rotateCard);
+                            // Check if the card is dragged to the left or right
+                            var endX = event.clientX;
+                            var direction = endX > startX ? 'right' : 'left';
+                            if (direction == 'right') {
+                                carteActuelle_1.boutonVert();
+                                // add translation to go outside of the screen
+                                var card = div.getElementsByTagName("div")[0];
+                                card.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+                                card.style.transform = "translateX(400%)";
+                                card.style.opacity = '0';
+                                // remove the card from the DOM after the animation is finished
+                                setTimeout(function () {
+                                    div.remove();
+                                }, 1000);
+                            }
+                            else {
+                                carteActuelle_1.boutonRouge();
+                                // add translation to go outside of the screen
+                                var card = div.getElementsByTagName("div")[0];
+                                card.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+                                card.style.transform = "translateX(-400%)";
+                                card.style.opacity = '0';
+                                // remove the card from the DOM after the animation is finished
+                                setTimeout(function () {
+                                    div.remove();
+                                }, 1000);
+                            }
+                        });
+                        function rotateCard(event) {
+                            // Calculate the rotation angle based on the mouse position
+                            var rotationAngle = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2) * 30; // Adjust the divisor to change the rotation speed
+                            // Rotate the card
+                            div.getElementsByTagName("div")[0].style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
+                        }
+                    };
+                    while (!partieTermine()) {
+                        _loop_1();
+                    }
+                    return [2 /*return*/];
+            }
         });
     });
 }
