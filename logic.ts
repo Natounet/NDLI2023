@@ -122,10 +122,7 @@ function genererAffichageCarte(carte: Carte): string {
 }
 
 async function main() {
-    let allCartes: Carte[] = await creerCarte();
-    const carteElement = document.createElement('div');
-    carteElement.innerHTML = genererAffichageCarte(allCartes[0]);
-    document.body.appendChild(carteElement);
+
 }
 
 main();
