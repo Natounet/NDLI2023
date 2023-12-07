@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 let temperature = 0;
 let industrie = 0;
 let transport = 0;

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var temperature = 0;
 var industrie = 0;
 var transport = 0;
