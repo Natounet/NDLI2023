@@ -1,18 +1,18 @@
 {
     "0": {
         "id": 0,
-        "nom": "Nouvel aéroport",
-        "description": "La France attire des touristes ! On va construire un aéroport Charles de Gaulles 2 pour les accueillir.",
+        "nom": "Bonjour Monsieur le Président",
+        "description": "Suite à votre récente élection, nous comptons sur vous pour sélectionner différents projets afin d'avoir un impact sur le réchauffement climatique !.",
         "effets": {
-            "industrie": 5,
-            "transport": 10,
+            "industrie": 0,
+            "transport": 0,
             "agriculture": 0,
             "logement": 0
         },
         "prerequis": [],
-        "source": "link",
-        "info": "Aie Aie Aie... Un aéroport ?",
-        "type": "action"
+        "source": "",
+        "info": "",
+        "type": "info"
     },
     "1": {
         "id": 1,
@@ -300,5 +300,20 @@
         "source": "https://www.ecologie.gouv.fr/eolien-en-mer-0",
         "info": "L'impact d'un tel parc serait globalement bénéfique, malgré la construction : elle serait rentabilisée au cours du temps.",
         "type": ""
+    },
+    "20": {
+        "id": 20,
+        "nom": "Nouvel aéroport",
+        "description": "La France attire des touristes ! On va construire un aéroport Charles de Gaulles 2 pour les accueillir.",
+        "effets": {
+            "industrie": 5,
+            "transport": 10,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "link",
+        "info": "Aie Aie Aie... Un aéroport ?",
+        "type": "action"
     }
 }
