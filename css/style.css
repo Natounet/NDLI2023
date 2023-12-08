@@ -7,6 +7,7 @@
 
 body {
     background-color: #1A4536;
+    /*background: linear-gradient(45deg, red, purple);*/
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -148,20 +149,58 @@ div.carte_interieur {
     align-items: center;
     height: 30%;
     font-weight: bold;
+    user-select: none;
 }
 
-svg{
+/*svg{
     width: 100px;
     height: 100px;
     position: absolute;
-    fill: none; /* Set fill to none to make the border visible */
-}
+    fill: none; /* Set fill to none to make the border visible 
+}*/
 
 svg.first{
+    width: 100px;
+    height: 100px;
+    position: absolute;
     fill:  #FF9999;
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
 }
 
 svg.second{
+    width: 100px;
+    height: 100px;
+    position: absolute;
     fill: transparent;
+}
+
+.dialog-container{
+    padding: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.dialog-button{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    text-decoration: none;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.dialog-button svg{
+    fill: red;
+    stroke: white;
+    transform:scale(2);
+}
+
+.dialog-button svg:hover{
+    cursor: pointer;
+    transform:scale(3);
 }
