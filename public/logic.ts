@@ -16,6 +16,11 @@ type effet = {
     logement: number;
 };
 
+enum type {
+    info,
+    action
+}
+
 class Carte {
     id: number;
     nom: string;
@@ -24,6 +29,7 @@ class Carte {
     prerequis: number[];
     source: string;
     info: string;
+    type: type;
 
     constructor(
         id: number,
@@ -32,7 +38,8 @@ class Carte {
         effets: effet,
         prerequis: number[],
         source: string,
-        info: string
+        info: string,
+        type: type,
     ) {
         this.id = id;
         this.nom = nom;
@@ -41,9 +48,12 @@ class Carte {
         this.prerequis = prerequis;
         this.source = source;
         this.info = info;
+        this.type = type;
     }
 
     boutonVert() {
+        if(this.type == type.info) return;
+
         if (boutonVertRestant > 0) {
             // Vérification si les prérequis sont satisfait.
             if (this.estJouable()) {
@@ -88,6 +98,8 @@ class Carte {
     }
 
     boutonRouge() {
+        if(this.type == type.info) return;
+
         // Vérification si les prérequis sont satisfait.
         if (this.estJouable()) {
             agriculture -= this.effets.agriculture;
@@ -129,7 +141,8 @@ async function creerCarte(): Promise<Carte[]> {
                 obj.effets,
                 obj.prerequis,
                 obj.source,
-                obj.info
+                obj.info,
+                obj.type
             )
         )
     );
@@ -219,7 +232,8 @@ async function acionCarte(event: MouseEvent){
 
     // Listen to mouseup events on the document
     let endX = event.clientX;
-
+    
+    if(isClicked == false) return;
 
     isClicked = false;
 
@@ -298,40 +312,6 @@ async function main() {
     document.addEventListener("mouseup", acionCarte) ;
 
     boucle();
-}
-
-function openDialog(effet: string) {
-    let dialogueDiv = document.createElement("dialog");
-    dialogueDiv.classList.add("dialog-container");
-    dialogueDiv.id = "dialog-" + effet;
-
-    let content = document.createElement("div")
-    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
-    content.textContent = jsonObject[effet];
-
-    let closeButton = document.createElement("button");
-    closeButton.classList.add("dialog-button");
-    closeButton.onclick = function () {
-        closeDialog(effet);
-    };
-
-    let svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-circle"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>`;
-    closeButton.innerHTML = (svgString);
-    dialogueDiv.appendChild(closeButton);
-    dialogueDiv.appendChild(content);
-    document.body.appendChild(dialogueDiv);
-    console.log('test');
-    (dialogueDiv as HTMLDialogElement).showModal();
-}
-
-
-function closeDialog(effet: string) {
-
-    let activeDialog = document.getElementById("dialog-" + effet);
-    if (activeDialog) {
-        (activeDialog as HTMLDialogElement).close();
-        activeDialog.remove();
-    }
 }
 
 main();

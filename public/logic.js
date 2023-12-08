@@ -41,8 +41,13 @@ var logement = 0;
 var carteJoues = [];
 var carteActuelle;
 var boutonVertRestant = 10;
+var type;
+(function (type) {
+    type[type["info"] = 0] = "info";
+    type[type["action"] = 1] = "action";
+})(type || (type = {}));
 var Carte = /** @class */ (function () {
-    function Carte(id, nom, description, effets, prerequis, source, info) {
+    function Carte(id, nom, description, effets, prerequis, source, info, type) {
         this.id = id;
         this.nom = nom;
         this.description = description;
@@ -50,8 +55,11 @@ var Carte = /** @class */ (function () {
         this.prerequis = prerequis;
         this.source = source;
         this.info = info;
+        this.type = type;
     }
     Carte.prototype.boutonVert = function () {
+        if (this.type == type.info)
+            return;
         if (boutonVertRestant > 0) {
             // Vérification si les prérequis sont satisfait.
             if (this.estJouable()) {
@@ -89,6 +97,8 @@ var Carte = /** @class */ (function () {
         }
     };
     Carte.prototype.boutonRouge = function () {
+        if (this.type == type.info)
+            return;
         // Vérification si les prérequis sont satisfait.
         if (this.estJouable()) {
             agriculture -= this.effets.agriculture;
@@ -125,7 +135,7 @@ function creerCarte() {
                     data = _a.sent();
                     cartes = Object.values(data);
                     cartes.forEach(function (obj) {
-                        return allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info));
+                        return allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info, obj.type));
                     });
                     return [2 /*return*/, allCartes];
             }
@@ -191,6 +201,8 @@ function acionCarte(event) {
             switch (_a.label) {
                 case 0:
                     endX = event.clientX;
+                    if (isClicked == false)
+                        return [2 /*return*/];
                     isClicked = false;
                     direction = endX > startX ? "right" : "left";
                     if (direction == "right") {
@@ -261,32 +273,5 @@ function main() {
             }
         });
     });
-}
-function openDialog(effet) {
-    var dialogueDiv = document.createElement("dialog");
-    dialogueDiv.classList.add("dialog-container");
-    dialogueDiv.id = "dialog-" + effet;
-    var content = document.createElement("div");
-    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
-    content.textContent = jsonObject[effet];
-    var closeButton = document.createElement("button");
-    closeButton.classList.add("dialog-button");
-    closeButton.onclick = function () {
-        closeDialog(effet);
-    };
-    var svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m15 9-6 6\"/><path d=\"m9 9 6 6\"/></svg>";
-    closeButton.innerHTML = (svgString);
-    dialogueDiv.appendChild(closeButton);
-    dialogueDiv.appendChild(content);
-    document.body.appendChild(dialogueDiv);
-    console.log('test');
-    dialogueDiv.showModal();
-}
-function closeDialog(effet) {
-    var activeDialog = document.getElementById("dialog-" + effet);
-    if (activeDialog) {
-        activeDialog.close();
-        activeDialog.remove();
-    }
 }
 main();
