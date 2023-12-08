@@ -153,6 +153,9 @@ div.carte_interieur {
 #theme-selector > *:hover {
     background-color: #3fe97d;
     border-radius: 10px;
+
+}
+
 .jauge{
     text-align: center;
     display: flex;
