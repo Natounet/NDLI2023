@@ -141,93 +141,119 @@ function partieTermine() {
 }
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
-    var carte;
-    while (true) {
-        var random = Math.floor(Math.random() * allCartes.length);
-        carte = allCartes[random];
-        if (!(carte.id in carteJoues) && carte.estJouable()) {
-            return carte;
+    for (var i = 0; i < allCartes.length; i++) {
+        if (!carteJoues.includes(i) && allCartes[i].estJouable()) {
+            return allCartes[i];
         }
     }
+    console.log("Je n'ai pas trouvé de carte candidate..");
+    return null;
 }
 function genererAffichageCarte(carte) {
     return "<div class=\"carte\"><h3>".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p>").concat(carte.description, "</p></div></div>");
 }
+var div;
+var startX = 0;
+var isClicked = false;
+function boucle() {
+    carteActuelle = carteSuivante();
+    if (carteActuelle == null) {
+        console.log("Il n'y a plus de cartes candidates.");
+        return;
+    }
+    // Création de la carte dans le DOM
+    var cartehtml = genererAffichageCarte(carteActuelle);
+    div = document.createElement("div");
+    div.innerHTML = cartehtml;
+    // The card come from under the screen
+    // Ajout de la carte dans le DOM
+    document.body.appendChild(div);
+    var a = document.body.getElementsByClassName("carte")[0];
+    a.style.transform = "translateY(100%) translateX(-50%)";
+    // Force a reflow to make sure the initial state is applied
+    void a.offsetWidth;
+    a.style.transition = "transform 0.6s ease-in-out";
+    a.style.transform = "translateY(0%) translateX(-50%)";
+    // Ajout de l'event listener pour le drag
+    div.addEventListener("mousedown", function (event) {
+        isClicked = true;
+        // Listen for mousemove events on the document
+        startX = event.clientX;
+    });
+}
+function delay(ms) {
+    return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+}
+function acionCarte(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var endX, direction, card, card;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    endX = event.clientX;
+                    isClicked = false;
+                    direction = endX > startX ? "right" : "left";
+                    if (direction == "right") {
+                        console.log(carteActuelle);
+                        if (carteActuelle == null) {
+                            console.log("Game over, no new cards will be generated.");
+                            return [2 /*return*/];
+                        }
+                        else {
+                            carteActuelle.boutonVert();
+                        }
+                        card = div.getElementsByTagName("div")[0];
+                        card.style.transition =
+                            "transform 1s ease-out, opacity 1s ease-out";
+                        card.style.transform = "translateX(400%)";
+                        card.style.opacity = "0";
+                        // remove the card from the DOM after the animation is finished
+                    }
+                    else {
+                        if (carteActuelle == null) {
+                            console.log("Game over, no new cards will be generated.");
+                            return [2 /*return*/];
+                        }
+                        else {
+                            carteActuelle.boutonRouge();
+                        } // add translation to go outside of the screen
+                        card = div.getElementsByTagName("div")[0];
+                        card.style.transition =
+                            "transform 1s ease-out, opacity 1s ease-out";
+                        card.style.transform = "translateX(-400%)";
+                        card.style.opacity = "0";
+                        // remove the card from the DOM after the animation is finished
+                    }
+                    return [4 /*yield*/, delay(1000)];
+                case 1:
+                    _a.sent();
+                    div.remove();
+                    if (!partieTermine()) {
+                        boucle();
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function rotateCard(event) {
+    if (!isClicked || div == null)
+        return;
+    // Calculate the rotation angle based on the mouse position
+    var rotationAngle = ((event.clientX - window.innerWidth / 2) /
+        (window.innerWidth / 2)) *
+        30; // Adjust the divisor to change the rotation speed
+    div.getElementsByTagName("div")[0].style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
+}
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        function boucle() {
-            var carteActuelle = carteSuivante();
-            var cartehtml = genererAffichageCarte(carteActuelle);
-            var div = document.createElement("div");
-            div.innerHTML = cartehtml;
-            document.body.appendChild(div);
-            div.addEventListener("mousedown", function (event) {
-                // Listen for mousemove events on the document
-                document.addEventListener("mousemove", rotateCard);
-            });
-            // Listen for mouseup events on the document
-            var startX;
-            document.addEventListener("mousedown", function (event) {
-                startX = event.clientX;
-                // Listen for mousemove events on the document
-                document.addEventListener("mousemove", rotateCard);
-            });
-            document.addEventListener("mouseup", function (event) {
-                // Remove the mousemove event listener
-                document.removeEventListener("mousemove", rotateCard);
-                // Check if the card is dragged to the left or right
-                var endX = event.clientX;
-                var direction = endX > startX ? "right" : "left";
-                if (direction == "right") {
-                    console.log(carteActuelle);
-                    carteActuelle.boutonVert();
-                    // add translation to go outside of the screen
-                    var card = div.getElementsByTagName("div")[0];
-                    card.style.transition =
-                        "transform 1s ease-out, opacity 1s ease-out";
-                    card.style.transform = "translateX(400%)";
-                    card.style.opacity = "0";
-                    // remove the card from the DOM after the animation is finished
-                    setTimeout(function () {
-                        div.remove();
-                    }, 1000);
-                }
-                else {
-                    carteActuelle.boutonRouge();
-                    // add translation to go outside of the screen
-                    var card = div.getElementsByTagName("div")[0];
-                    card.style.transition =
-                        "transform 1s ease-out, opacity 1s ease-out";
-                    card.style.transform = "translateX(-400%)";
-                    card.style.opacity = "0";
-                    // remove the card from the DOM after the animation is finished
-                    setTimeout(function () {
-                        div.remove();
-                    }, 1000);
-                }
-                if (!partieTermine()) {
-                    boucle();
-                }
-            });
-            function rotateCard(event) {
-                // Calculate the rotation angle based on the mouse position
-                var rotationAngle = ((event.clientX - window.innerWidth / 2) /
-                    (window.innerWidth / 2)) *
-                    30; // Adjust the divisor to change the rotation speed
-                // Rotate the card
-                div.getElementsByTagName("div")[0].style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
-            }
-        }
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
                     allCartes = _a.sent();
-                    console.log(allCartes);
-                    if (partieTermine()) {
-                        console.log("Game over, no new cards will be generated.");
-                        return [2 /*return*/];
-                    }
+                    document.addEventListener("mousemove", rotateCard);
+                    document.addEventListener("mouseup", acionCarte);
                     boucle();
                     return [2 /*return*/];
             }

@@ -80,7 +80,8 @@ div.carte {
     position: absolute;
     bottom: -50px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(1000%);
+    transition: transform 1s linear;
     width: 250px;
     height: 400px;
     border: 2px  black;
@@ -109,6 +110,8 @@ div.carte_interieur {
     background-color: #3fe97d;
     overflow-wrap: break-word;
 }
+
+
 
 #theme {
     position: absolute;
