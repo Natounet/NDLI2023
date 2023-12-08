@@ -52,7 +52,7 @@ class Carte {
     }
 
     boutonVert() {
-        if(this.type == type.info) return;
+        if (this.type == type.info) return;
 
         if (boutonVertRestant > 0) {
             // Vérification si les prérequis sont satisfait.
@@ -69,28 +69,28 @@ class Carte {
 
             if (svgContainerLogement) {
                 const firstSvg = svgContainerLogement.querySelector('.first') as SVGElement;
-                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-logement)+"%, 100% "+(100-logement)+"%, 100% 100%, 0 100%)";
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 " + (100 - logement) + "%, 100% " + (100 - logement) + "%, 100% 100%, 0 100%)";
             }
 
             const svgContainerTransport = document.querySelector('.svg-container.transport') as HTMLElement;
 
             if (svgContainerTransport) {
                 const firstSvg = svgContainerTransport.querySelector('.first') as SVGElement;
-                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-transport)+"%, 100% "+(100-transport)+"%, 100% 100%, 0 100%)";
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 " + (100 - transport) + "%, 100% " + (100 - transport) + "%, 100% 100%, 0 100%)";
             }
 
             const svgContainerIndustrie = document.querySelector('.svg-container.industrie') as HTMLElement;
 
             if (svgContainerIndustrie) {
                 const firstSvg = svgContainerIndustrie.querySelector('.first') as SVGElement;
-                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-industrie)+"%, 100% "+(100-industrie)+"%, 100% 100%, 0 100%)";
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 " + (100 - industrie) + "%, 100% " + (100 - industrie) + "%, 100% 100%, 0 100%)";
             }
 
             const svgContainerAgriculture = document.querySelector('.svg-container.agriculture') as HTMLElement;
 
             if (svgContainerAgriculture) {
                 const firstSvg = svgContainerAgriculture.querySelector('.first') as SVGElement;
-                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-agriculture)+"%, 100% "+(100-agriculture)+"%, 100% 100%, 0 100%)";
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 " + (100 - agriculture) + "%, 100% " + (100 - agriculture) + "%, 100% 100%, 0 100%)";
             }
 
             boutonVertRestant -= 1;
@@ -98,7 +98,7 @@ class Carte {
     }
 
     boutonRouge() {
-        if(this.type == type.info) return;
+        if (this.type == type.info) return;
 
         // Vérification si les prérequis sont satisfait.
         if (this.estJouable()) {
@@ -155,9 +155,7 @@ function partieTermine(): boolean {
         (industrie > 100 ||
             transport > 100 ||
             agriculture > 100 ||
-            logement > 100) &&
-        carteJoues.length <= allCartes.length
-        || boutonVertRestant == 0
+            logement > 100) || carteJoues.length == allCartes.length || boutonVertRestant == 0
     );
 }
 
@@ -173,7 +171,7 @@ function carteSuivante(): Carte | null {
     console.log("Je n'ai pas trouvé de carte candidate..");
     return null;
 
-    
+
 }
 
 function genererAffichageCarte(carte: Carte): string {
@@ -187,16 +185,16 @@ let index: number = 0;
 
 
 function boucle() {
-    if(partieTermine()) {
+    if (partieTermine()) {
         let carteActuelle = null;
     };
 
-    if(index == 0) {
+    if (index == 0) {
         carteActuelle = allCartes[0]
     }
 
     carteActuelle = carteSuivante()!;
-    
+
     if (carteActuelle == null) {
         console.log("Il n'y a plus de cartes candidates.");
         return;
@@ -206,7 +204,7 @@ function boucle() {
     let cartehtml = genererAffichageCarte(carteActuelle);
     div = document.createElement("div");
     div.innerHTML = cartehtml;
-    
+
     // The card come from under the screen
 
     // Ajout de la carte dans le DOM
@@ -214,9 +212,9 @@ function boucle() {
     let a = document.body.getElementsByClassName("carte")[0] as HTMLElement;
     a.style.transform = `translateY(100%) translateX(-50%)`;
 
-// Force a reflow to make sure the initial state is applied
+    // Force a reflow to make sure the initial state is applied
     void a.offsetWidth;
-    
+
     a.style.transition = "transform 0.6s ease-in-out";
     a.style.transform = `translateY(0%) translateX(-50%)`;
 
@@ -230,7 +228,7 @@ function boucle() {
 
     index++;
 
-    
+
 }
 
 function delay(ms: number) {
@@ -239,26 +237,26 @@ function delay(ms: number) {
 
 
 
-async function actionCarte(event: MouseEvent){
+async function actionCarte(event: MouseEvent) {
 
-    if(partieTermine()) {
+    if (partieTermine()) {
         let carteActuelle = null;
     };
     // Listen to mouseup events on the document
     let endX = event.clientX;
-    
-    if(isClicked == false) return;
+
+    if (isClicked == false) return;
 
     isClicked = false;
 
 
     let direction = endX > startX ? "right" : "left";
     if (direction == "right") {
-        if(carteActuelle == null) {
+        if (carteActuelle == null) {
             console.log("Game over, no new cards will be generated.");
             return;
         }
-        else{
+        else {
             carteActuelle.boutonVert();
         }
         // add translation to go outside of the screen
@@ -273,11 +271,11 @@ async function actionCarte(event: MouseEvent){
 
     } else {
 
-        if(carteActuelle == null) {
+        if (carteActuelle == null) {
             console.log("Game over, no new cards will be generated.");
             return;
         }
-        else{
+        else {
             carteActuelle.boutonRouge();
         }                // add translation to go outside of the screen
         let card = div.getElementsByTagName("div")[0];
@@ -289,7 +287,7 @@ async function actionCarte(event: MouseEvent){
         // remove the card from the DOM after the animation is finished
 
 
-        
+
     }
 
     await delay(1000);
@@ -311,7 +309,7 @@ async function actionCarte(event: MouseEvent){
 
 
 function rotateCard(event: MouseEvent) {
-    if(partieTermine()) {
+    if (partieTermine()) {
         let carteActuelle = null;
     };
     if (!isClicked || div == null) return;
@@ -329,15 +327,15 @@ function rotateCard(event: MouseEvent) {
 }
 
 async function greenButton(event: MouseEvent) {
-    if(partieTermine()) {
+    if (partieTermine()) {
         let carteActuelle = null;
     };
 
-    if(carteActuelle == null) {
+    if (carteActuelle == null) {
         console.log("Game over, no new cards will be generated.");
         return;
     }
-    else{
+    else {
         carteActuelle.boutonVert();
     }
     // add translation to go outside of the screen
@@ -356,15 +354,15 @@ async function greenButton(event: MouseEvent) {
 }
 
 async function redButton(event: MouseEvent) {
-    if(partieTermine()) {
+    if (partieTermine()) {
         let carteActuelle = null;
     };
 
-    if(carteActuelle == null) {
+    if (carteActuelle == null) {
         console.log("Game over, no new cards will be generated.");
         return;
     }
-    else{
+    else {
         carteActuelle.boutonRouge();
     }                // add translation to go outside of the screen
     let card = div.getElementsByTagName("div")[0];
@@ -382,7 +380,7 @@ async function redButton(event: MouseEvent) {
 }
 
 async function keyboardHandler(event: KeyboardEvent) {
-    if(partieTermine()) {
+    if (partieTermine()) {
         let carteActuelle = null;
     };
 
@@ -402,7 +400,7 @@ async function main() {
 
     // Cards listeners
     document.addEventListener("mousemove", rotateCard);
-    document.addEventListener("mouseup", actionCarte) ;
+    document.addEventListener("mouseup", actionCarte);
 
 
     const root = document.querySelector(':root') as HTMLElement;
@@ -425,7 +423,7 @@ async function main() {
         }
         document.getElementById("theme-selector")!.style.display = "none";
     })
-    
+
     document.getElementById("contrast-theme-btn")?.addEventListener("click", () => {
         root.style.setProperty('--primary-color', '#0E271E');
         root.style.setProperty('--accent-green', '#DCEA3B');
