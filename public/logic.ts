@@ -239,6 +239,8 @@ function delay(ms: number) {
 
 async function actionCarte(event: MouseEvent){
 
+    if(partieTermine()) throw new Error("Partie terminée");
+
     // Listen to mouseup events on the document
     let endX = event.clientX;
     
@@ -306,6 +308,8 @@ async function actionCarte(event: MouseEvent){
 
 
 function rotateCard(event: MouseEvent) {
+    if(partieTermine()) throw new Error("Partie terminée");
+
     if (!isClicked || div == null) return;
     // Calculate the rotation angle based on the mouse position
     let rotationAngle =
@@ -321,6 +325,7 @@ function rotateCard(event: MouseEvent) {
 }
 
 async function greenButton(event: MouseEvent) {
+    if(partieTermine()) throw new Error("Partie terminée");
 
     if(carteActuelle == null) {
         console.log("Game over, no new cards will be generated.");
@@ -345,6 +350,8 @@ async function greenButton(event: MouseEvent) {
 }
 
 async function redButton(event: MouseEvent) {
+    if(partieTermine()) throw new Error("Partie terminée");
+
     if(carteActuelle == null) {
         console.log("Game over, no new cards will be generated.");
         return;
@@ -367,6 +374,8 @@ async function redButton(event: MouseEvent) {
 }
 
 async function keyboardHandler(event: KeyboardEvent) {
+    if(partieTermine()) throw new Error("Partie terminée");
+
 
     // Arrow and D and Q
     if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "q") {

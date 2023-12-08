@@ -206,6 +206,8 @@ function actionCarte(event) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (partieTermine())
+                        throw new Error("Partie terminée");
                     endX = event.clientX;
                     if (isClicked == false)
                         return [2 /*return*/];
@@ -263,6 +265,8 @@ function actionCarte(event) {
     });
 }
 function rotateCard(event) {
+    if (partieTermine())
+        throw new Error("Partie terminée");
     if (!isClicked || div == null)
         return;
     // Calculate the rotation angle based on the mouse position
@@ -279,6 +283,8 @@ function greenButton(event) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (partieTermine())
+                        throw new Error("Partie terminée");
                     if (carteActuelle == null) {
                         console.log("Game over, no new cards will be generated.");
                         return [2 /*return*/];
@@ -309,6 +315,8 @@ function redButton(event) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (partieTermine())
+                        throw new Error("Partie terminée");
                     if (carteActuelle == null) {
                         console.log("Game over, no new cards will be generated.");
                         return [2 /*return*/];
@@ -336,6 +344,8 @@ function redButton(event) {
 function keyboardHandler(event) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
+            if (partieTermine())
+                throw new Error("Partie terminée");
             // Arrow and D and Q
             if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "q") {
                 if (event.key == "ArrowLeft" || event.key == "q") {
@@ -350,7 +360,6 @@ function keyboardHandler(event) {
     });
 }
 function main() {
-<<<<<<< HEAD
     var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function () {
         var root;
@@ -359,17 +368,7 @@ function main() {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
                     allCartes = _d.sent();
-=======
-    var _a;
-    return __awaiter(this, void 0, void 0, function () {
-        var root;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, creerCarte()];
-                case 1:
-                    allCartes = _b.sent();
                     // Cards listeners
->>>>>>> a8c1e20691fd483366b31325d70564372e52d93e
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
                     root = document.querySelector(':root');
@@ -391,7 +390,6 @@ function main() {
                         }
                         document.getElementById("theme-selector").style.display = "none";
                     });
-<<<<<<< HEAD
                     (_b = document.getElementById("contrast-theme-btn")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#0E271E');
                         root.style.setProperty('--accent-green', '#DCEA3B');
@@ -420,13 +418,11 @@ function main() {
                         document.body.appendChild(audio);
                         document.getElementById("theme-selector").style.display = "none";
                     });
-=======
                     // Buttons listenerss
                     document.getElementsByClassName("correctButton")[0].addEventListener("mouseup", greenButton);
                     document.getElementsByClassName("wrongButton")[0].addEventListener("mouseup", redButton);
                     // Keyboard listeners
                     document.addEventListener("keydown", keyboardHandler);
->>>>>>> a8c1e20691fd483366b31325d70564372e52d93e
                     boucle();
                     return [2 /*return*/];
             }
