@@ -194,9 +194,9 @@ function boucle() {
 function delay(ms) {
     return new Promise(function (resolve) { return setTimeout(resolve, ms); });
 }
-function acionCarte(event) {
+function actionCarte(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var endX, direction, card, card;
+        var endX, direction, card, card, rickrollDiv;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -242,6 +242,15 @@ function acionCarte(event) {
                     div.remove();
                     if (!partieTermine()) {
                         boucle();
+                    }
+                    else {
+                        rickrollDiv = document.createElement("div");
+                        rickrollDiv.innerHTML = "<img src=\"../assets/rickroll.gif\">";
+                        rickrollDiv.style.position = "fixed";
+                        rickrollDiv.style.left = "50%";
+                        rickrollDiv.style.transform = "translateX(-50%)";
+                        rickrollDiv.style.zIndex = '999';
+                        document.body.appendChild(rickrollDiv);
                     }
                     return [2 /*return*/];
             }
@@ -294,7 +303,7 @@ function main() {
                 case 1:
                     allCartes = _a.sent();
                     document.addEventListener("mousemove", rotateCard);
-                    document.addEventListener("mouseup", acionCarte);
+                    document.addEventListener("mouseup", actionCarte);
                     boucle();
                     return [2 /*return*/];
             }

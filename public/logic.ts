@@ -228,7 +228,7 @@ function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function acionCarte(event: MouseEvent){
+async function actionCarte(event: MouseEvent){
 
     // Listen to mouseup events on the document
     let endX = event.clientX;
@@ -284,6 +284,14 @@ async function acionCarte(event: MouseEvent){
 
     if (!partieTermine()) {
         boucle();
+    } else {
+        let rickrollDiv = document.createElement("div");
+        rickrollDiv.innerHTML = `<img src="../assets/rickroll.gif">`;
+        rickrollDiv.style.position = "fixed";
+        rickrollDiv.style.left = "50%";
+        rickrollDiv.style.transform = "translateX(-50%)";
+        rickrollDiv.style.zIndex = '999';
+        document.body.appendChild(rickrollDiv);
     }
 
 }
@@ -343,7 +351,7 @@ async function main() {
     allCartes = await creerCarte();
 
     document.addEventListener("mousemove", rotateCard);
-    document.addEventListener("mouseup", acionCarte) ;
+    document.addEventListener("mouseup", actionCarte) ;
 
     boucle();
 }

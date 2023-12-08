@@ -182,7 +182,7 @@ div.carte_interieur {
     border-radius: 20px;
     padding: 1%;
     border: white solid 5px ;
-    z-index: 99999;
+    z-index: ;
 }
 
 .svg-container:hover{
