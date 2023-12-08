@@ -259,6 +259,33 @@ function rotateCard(event) {
     tkt.style.transition = "none";
     tkt.style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
 }
+function openDialog(effet) {
+    var dialogueDiv = document.createElement("dialog");
+    dialogueDiv.classList.add("dialog-container");
+    dialogueDiv.id = "dialog-" + effet;
+    var content = document.createElement("div");
+    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
+    content.textContent = jsonObject[effet];
+    var closeButton = document.createElement("button");
+    closeButton.classList.add("dialog-button");
+    closeButton.onclick = function () {
+        closeDialog(effet);
+    };
+    var svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m15 9-6 6\"/><path d=\"m9 9 6 6\"/></svg>";
+    closeButton.innerHTML = (svgString);
+    dialogueDiv.appendChild(closeButton);
+    dialogueDiv.appendChild(content);
+    document.body.appendChild(dialogueDiv);
+    console.log('test');
+    dialogueDiv.showModal();
+}
+function closeDialog(effet) {
+    var activeDialog = document.getElementById("dialog-" + effet);
+    if (activeDialog) {
+        activeDialog.close();
+        activeDialog.remove();
+    }
+}
 function main() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
