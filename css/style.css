@@ -123,7 +123,8 @@ div.carte {
     transform: translateX(-50%) translateY(1000%) rotate(0deg);
     transition: transform 1s linear;
     width: 300px;
-    height: 450px;
+    /*height: 450px;*/
+    height: 50%;
     border: 2px  black;
     border-radius: 20px;
     padding: 30px 30px;
@@ -324,6 +325,13 @@ svg.second{
     padding: 1.5%;
     z-index: 999999;
     outline: none;
+    border: none;
+}
+
+.wrongButton:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    transition: 0.2s ease;
 }
 
 .correctButton{
@@ -336,4 +344,11 @@ svg.second{
     padding: 1.5%;
     z-index: 999999;
     outline: none;
+    border: none;
+}
+
+.correctButton:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    transition: 0.2s ease;
 }

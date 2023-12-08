@@ -291,16 +291,23 @@ async function actionCarte(event: MouseEvent){
 
     if (!partieTermine()) {
         boucle();
-    } else {
-        let rickrollDiv = document.createElement("div");
-        rickrollDiv.innerHTML = `<img src="../assets/rickroll.gif">`;
-        rickrollDiv.style.position = "fixed";
-        rickrollDiv.style.left = "50%";
-        rickrollDiv.style.transform = "translateX(-50%)";
-        rickrollDiv.style.zIndex = '999';
-        document.body.appendChild(rickrollDiv);
-    }
+    } 
 
+}
+
+function rickrollFunc(){
+    let rickrollDiv = document.createElement("div");
+    rickrollDiv.innerHTML = `<img src="../assets/rickroll.gif">`;
+    rickrollDiv.style.position = "fixed";
+    rickrollDiv.style.left = "50%";
+    rickrollDiv.style.transform = "translateX(-50%)";
+    rickrollDiv.style.zIndex = '999';
+    const audio = document.createElement("audio");
+    audio.classList.add("audio-tag");
+    audio.src = '../assets/rickroll.mp3';
+    audio.autoplay = true; // Add the autoplay attribute to play the audio automatically
+    document.body.appendChild(audio);
+    document.body.appendChild(rickrollDiv);
 }
 
 

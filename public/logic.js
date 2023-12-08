@@ -201,7 +201,7 @@ function delay(ms) {
 }
 function actionCarte(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var endX, direction, card, card, rickrollDiv;
+        var endX, direction, card, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -247,19 +247,24 @@ function actionCarte(event) {
                     if (!partieTermine()) {
                         boucle();
                     }
-                    else {
-                        rickrollDiv = document.createElement("div");
-                        rickrollDiv.innerHTML = "<img src=\"../assets/rickroll.gif\">";
-                        rickrollDiv.style.position = "fixed";
-                        rickrollDiv.style.left = "50%";
-                        rickrollDiv.style.transform = "translateX(-50%)";
-                        rickrollDiv.style.zIndex = '999';
-                        document.body.appendChild(rickrollDiv);
-                    }
                     return [2 /*return*/];
             }
         });
     });
+}
+function rickrollFunc() {
+    var rickrollDiv = document.createElement("div");
+    rickrollDiv.innerHTML = "<img src=\"../assets/rickroll.gif\">";
+    rickrollDiv.style.position = "fixed";
+    rickrollDiv.style.left = "50%";
+    rickrollDiv.style.transform = "translateX(-50%)";
+    rickrollDiv.style.zIndex = '999';
+    var audio = document.createElement("audio");
+    audio.classList.add("audio-tag");
+    audio.src = '../assets/rickroll.mp3';
+    audio.autoplay = true; // Add the autoplay attribute to play the audio automatically
+    document.body.appendChild(audio);
+    document.body.appendChild(rickrollDiv);
 }
 function rotateCard(event) {
     if (!isClicked || div == null)
@@ -349,7 +354,6 @@ function keyboardHandler(event) {
     });
 }
 function main() {
-<<<<<<< HEAD
     var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function () {
         var root;
@@ -358,17 +362,7 @@ function main() {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
                     allCartes = _d.sent();
-=======
-    var _a;
-    return __awaiter(this, void 0, void 0, function () {
-        var root;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, creerCarte()];
-                case 1:
-                    allCartes = _b.sent();
                     // Cards listeners
->>>>>>> a8c1e20691fd483366b31325d70564372e52d93e
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
                     root = document.querySelector(':root');
@@ -390,7 +384,6 @@ function main() {
                         }
                         document.getElementById("theme-selector").style.display = "none";
                     });
-<<<<<<< HEAD
                     (_b = document.getElementById("contrast-theme-btn")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#0E271E');
                         root.style.setProperty('--accent-green', '#DCEA3B');
@@ -419,13 +412,11 @@ function main() {
                         document.body.appendChild(audio);
                         document.getElementById("theme-selector").style.display = "none";
                     });
-=======
                     // Buttons listenerss
                     document.getElementsByClassName("correctButton")[0].addEventListener("mouseup", greenButton);
                     document.getElementsByClassName("wrongButton")[0].addEventListener("mouseup", redButton);
                     // Keyboard listeners
                     document.addEventListener("keydown", keyboardHandler);
->>>>>>> a8c1e20691fd483366b31325d70564372e52d93e
                     boucle();
                     return [2 /*return*/];
             }
