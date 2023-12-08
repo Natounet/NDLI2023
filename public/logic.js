@@ -276,12 +276,6 @@ function rickrollFunc() {
     document.body.appendChild(rickrollDiv);
 }
 function rotateCard(event) {
-    if (partieTermine()) {
-        var carteActuelle_3 = null;
-        rickrollFunc();
-        return;
-    }
-    ;
     if (!isClicked || div == null)
         return;
     // Calculate the rotation angle based on the mouse position
@@ -294,12 +288,12 @@ function rotateCard(event) {
 }
 function greenButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_4, card;
+        var carteActuelle_3, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
-                        carteActuelle_4 = null;
+                        carteActuelle_3 = null;
                         rickrollFunc();
                         return [2 /*return*/];
                     }
@@ -330,12 +324,12 @@ function greenButton(event) {
 }
 function redButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_5, card;
+        var carteActuelle_4, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
-                        carteActuelle_5 = null;
+                        carteActuelle_4 = null;
                         rickrollFunc();
                         return [2 /*return*/];
                     }
@@ -366,10 +360,10 @@ function redButton(event) {
 }
 function keyboardHandler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_6;
+        var carteActuelle_5;
         return __generator(this, function (_a) {
             if (partieTermine()) {
-                carteActuelle_6 = null;
+                carteActuelle_5 = null;
                 rickrollFunc();
                 return [2 /*return*/];
             }
