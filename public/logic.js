@@ -204,16 +204,13 @@ function delay(ms) {
 }
 function actionCarte(event) {
     return __awaiter(this, void 0, void 0, function () {
-<<<<<<< HEAD
-        var endX, direction, card, card;
-=======
-        var carteActuelle_2, endX, direction, card, card, rickrollDiv;
->>>>>>> 3f259bd8a1c8e052f7dd681e1ddafbec4fe35ceb
+        var carteActuelle_2, endX, direction, card, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
                         carteActuelle_2 = null;
+                        rickrollFunc();
                     }
                     ;
                     endX = event.clientX;
@@ -280,6 +277,7 @@ function rickrollFunc() {
 function rotateCard(event) {
     if (partieTermine()) {
         var carteActuelle_3 = null;
+        rickrollFunc();
     }
     ;
     if (!isClicked || div == null)
@@ -300,6 +298,7 @@ function greenButton(event) {
                 case 0:
                     if (partieTermine()) {
                         carteActuelle_4 = null;
+                        rickrollFunc();
                     }
                     ;
                     if (carteActuelle == null) {
@@ -334,6 +333,7 @@ function redButton(event) {
                 case 0:
                     if (partieTermine()) {
                         carteActuelle_5 = null;
+                        rickrollFunc();
                     }
                     ;
                     if (carteActuelle == null) {
@@ -366,6 +366,7 @@ function keyboardHandler(event) {
         return __generator(this, function (_a) {
             if (partieTermine()) {
                 carteActuelle_6 = null;
+                rickrollFunc();
             }
             ;
             // Arrow and D and Q

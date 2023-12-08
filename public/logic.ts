@@ -109,7 +109,7 @@ class Carte {
 
             carteJoues.push(this.id);
         }
-        
+
     }
 
     estJouable(): boolean {
@@ -242,6 +242,7 @@ async function actionCarte(event: MouseEvent) {
 
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
     };
     // Listen to mouseup events on the document
     let endX = event.clientX;
@@ -319,6 +320,8 @@ function rickrollFunc(){
 function rotateCard(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+
     };
     if (!isClicked || div == null) return;
     // Calculate the rotation angle based on the mouse position
@@ -337,6 +340,8 @@ function rotateCard(event: MouseEvent) {
 async function greenButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+
     };
 
     if (carteActuelle == null) {
@@ -364,6 +369,8 @@ async function greenButton(event: MouseEvent) {
 async function redButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+
     };
 
     if (carteActuelle == null) {
@@ -390,6 +397,8 @@ async function redButton(event: MouseEvent) {
 async function keyboardHandler(event: KeyboardEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+
     };
 
     // Arrow and D and Q
