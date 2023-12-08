@@ -320,13 +320,9 @@ function rickrollFunc(){
 
 
 function rotateCard(event: MouseEvent) {
-<<<<<<< HEAD
     if (partieTermine()) {
         let carteActuelle = null;
     };
-=======
-    
->>>>>>> 0bb9b66e1b711bc2a451454bacc86487842b0ae4
     if (!isClicked || div == null) return;
     // Calculate the rotation angle based on the mouse position
     let rotationAngle =

@@ -138,14 +138,9 @@ div.carte {
     transform: translateX(-50%) translateY(1000%) rotate(0deg);
     transition: transform 1s linear;
     width: 300px;
-<<<<<<< HEAD
-    height: 50%;
-    border: 2px black;
-=======
     /*height: 450px;*/
     height: 50%;
     border: 2px  black;
->>>>>>> 0bb9b66e1b711bc2a451454bacc86487842b0ae4
     border-radius: 20px;
     padding: 30px 30px;
     background-color: white;
