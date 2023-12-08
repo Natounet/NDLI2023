@@ -19,10 +19,10 @@
         "nom": "Fini le nucléaire ! ",
         "description": "Vous remplacez une centrale nucléaire par 1500 éoliennes.",
         "effets": {
-            "industrie": 4,
+            "industrie": 10,
             "transport": 0,
             "agriculture": 0,
-            "logement": 8
+            "logement": 10
         },
         "prerequis": [],
         "source": "https://www.francetvinfo.fr/societe/nucleaire/desintox-il-faudrait-7000-eoliennes-pour-compenser-la-fermeture-de-fessenheim-faux-soyons-precis-sur-les-chiffres_2799831.html",
@@ -40,7 +40,7 @@
             "logement": 0
         },
         "prerequis": [],
-        "source": "link",
+        "source": "",
         "info": "Effectivement, moins de voitures implique moins d'émission de CO2",
         "type": "action"
     },
@@ -59,21 +59,6 @@
         "info": "L'impact est vraiment négligeable...",
         "type": "action"
     },
-    "4": {
-        "id": 4,
-        "nom": "Planter un arbre, puis deux...",
-        "description": "On va planter 1000 arbres dans les grandes villes.",
-        "effets": {
-            "industrie": 0,
-            "transport": 0,
-            "agriculture": 0,
-            "logement": 0
-        },
-        "prerequis": [],
-        "source": "https://www.greenpeace.fr/est-ce-que-planter-des-arbres-sauvera-le-climat/",
-        "info": "L'impact sur la concentration est très négligeable à court terme",
-        "type": "action"
-    },
     "5": {
         "id": 5,
         "nom": "Planter un bambou, puis deux...",
@@ -81,7 +66,7 @@
         "effets": {
             "industrie": 0,
             "transport": 0,
-            "agriculture": 0,
+            "agriculture": -1,
             "logement": 0
         },
         "prerequis": [],
@@ -139,10 +124,10 @@
         "nom": "Pour la science !",
         "description": "Vous financez de nombreux scientifiques pour trouver un moyen de synthétiser le charbon, afin d'en faire une énergie renouvelable",
         "effets": {
-            "industrie": 5,
+            "industrie": 10,
             "transport": 0,
             "agriculture": 0,
-            "logement": 5
+            "logement": 10
         },
         "prerequis": [],
         "source": "",
@@ -167,10 +152,10 @@
     "11": {
         "id": 11,
         "nom": "Fin du thermique",
-        "description": "Vous interdisez la production des véhicules thermiques dès aujourd'hui",
+        "description": "Vous interdisez la production des véhicules thermiques dès aujourd'hui, en faveur des véhicules électriques et hybrides",
         "effets": {
-            "industrie": 2,
-            "transport": -2,
+            "industrie": 5,
+            "transport": -10,
             "agriculture": 0,
             "logement": 0
         },
@@ -216,7 +201,7 @@
         "effets": {
             "industrie": 0,
             "transport": 0,
-            "agriculture": -5,
+            "agriculture": -10,
             "logement": 0
         },
         "prerequis": [],
@@ -230,7 +215,7 @@
         "description": "Vous changez la limitation de vitesse sur l'autoroute, passant de 130 à 110 km/h",
         "effets": {
             "industrie": 0,
-            "transport": -2,
+            "transport": -5,
             "agriculture": 0,
             "logement": 0
         },
@@ -254,21 +239,6 @@
         "info": "C'est un gros sacrifice pour un résultat assez décevant... en 2020, le confinement a causé une baise de 7% des émissions de GES",
         "type": "action"
     },
-    "17": {
-        "id": 17,
-        "nom": "Recyclage pour tous !",
-        "description": "Vous rendez obligatoire le recyclage de tous les produits à base de plastique.",
-        "effets": {
-            "industrie": -2,
-            "transport": -2,
-            "agriculture": -2,
-            "logement": 4
-        },
-        "prerequis": [],
-        "source": "https://propositions.conventioncitoyennepourleclimat.fr/objectif/favoriser-une-production-plus-responsable-developper-les-filieres-de-reparation-de-recyclage-et-de-gestion-des-dechets/",
-        "info": "Il s'agit d'une proposition de la convention citoyenne pour le climat !",
-        "type": "action"
-    },
     "18": {
         "id": 18,
         "nom": "Guerre Mondiale",
@@ -289,16 +259,16 @@
     "19": {
         "id": 19,
         "nom": "Nouveau parc éolien",
-        "description": "Vous ordonnez la création d'un nouveau parc éolien offshore.",
+        "description": "Vous décrettez la création d'un nouveau parc éolien offshore.",
         "effets": {
-            "industrie": -3,
+            "industrie": -5,
             "transport": 0,
             "agriculture": 0,
-            "logement": -2
+            "logement": -5
         },
         "prerequis": [],
         "source": "https://www.ecologie.gouv.fr/eolien-en-mer-0",
-        "info": "L'impact d'un tel parc serait globalement bénéfique, malgré la construction : elle serait rentabilisée au cours du temps.",
+        "info": "L'impact d'un tel parc serait globalement bénéfique, et ce malgré la construction : elle serait rentabilisée au cours du temps.",
         "type": ""
     },
     "20": {
@@ -306,14 +276,196 @@
         "nom": "Nouvel aéroport",
         "description": "La France attire des touristes ! On va construire un aéroport Charles de Gaulles 2 pour les accueillir.",
         "effets": {
-            "industrie": 5,
+            "industrie": 0,
             "transport": 10,
             "agriculture": 0,
             "logement": 0
         },
         "prerequis": [],
-        "source": "link",
+        "source": "",
         "info": "Aie Aie Aie... Un aéroport ?",
+        "type": "action"
+    },
+    "21": {
+        "id": 21,
+        "nom": "Entreprise AlStom",
+        "description": "L'entreprise Alstom vous propose d'exploiter un nouveau gisement de cuivre français pour ouvrir 100 lignes de train.",
+        "effets": {
+            "industrie": 10,
+            "transport": -10,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "22": {
+        "id": 22,
+        "nom": "C'est une bonne isolation",
+        "description": "Vous doublez les subventions sur le blé dans le but de produire de l'isolant pour logements",
+        "effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": 10,
+            "logement": -10
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "23": {
+        "id": 23,
+        "nom": "Vive le colza",
+        "description": "Vous créez 50000 hectares de colza dans le but de créer du biocarburant",
+        "effets": {
+            "industrie": 0,
+            "transport": -10,
+            "agriculture": 10,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "24": {
+        "id": 24,
+        "nom": "Vive le colza",
+        "description": "Vous créez 10 lignes de transport de nourriture ferroviaire, ce qui permettra de réduire les coût de nourritures produites en France",
+        "effets": {
+            "industrie": 10,
+            "transport": 0,
+            "agriculture": -10,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "25": {
+        "id": 25,
+        "nom": "Inovation pour les usines",
+        "description": "Vous convertissez 3000 emplois dans la rénovation thermique en capture de carbone en sortie de cheminées d'usines.",
+        "effets": {
+            "industrie": -10,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": 10
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "26": {
+        "id": 26,
+        "nom": "Plus de pompes à chaleur",
+        "description": "Vous faites construire 2 méga-usines spécialisées dans la fabrication de pompes à chaleur",
+        "effets": {
+            "industrie": 10,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": -10
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "27": {
+        "id": 27,
+        "nom": "Un nouvel engrais",
+        "description": "Vous financez une recyclerie d'huiles moteur, qui étaient jusqu'à présent brulées, en engrais azotés",
+        "effets": {
+            "industrie": -10,
+            "transport": 0,
+            "agriculture": 10,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "28": {
+        "id": 28,
+        "nom": "Du recyclage !",
+        "description": "Vous financez une staurtup qui récupère des déchets industriels intraitables et les envoie en avion dans un centre de recyclage spécialisé à l'autre bout du monde",
+        "effets": {
+            "industrie": -10,
+            "transport": 10,
+            "agriculture": 0,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "29": {
+        "id": 29,
+        "nom": "Pas bien de se chauffer",
+        "description": "Vous faites passer une loi interdisant les radiateurs électriques",
+        "effets": {
+            "industrie": 0,
+            "transport": 0,
+            "agriculture": 0,
+            "logement": 10
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "30": {
+        "id": 30,
+        "nom": "Des gros pneus",
+        "description": "Vous financez une usine pour recycler les pneus de vieux tracteurs envoyés à la casse",
+        "effets": {
+            "industrie": 10,
+            "transport": 0,
+            "agriculture": -5,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "31": {
+        "id": 31,
+        "nom": "Datachauffeurs",
+        "description": "Vous validez trois projets de datacenters valorisant leur chaleur perdue en chauffant des bâtiments",
+        "effets": {
+            "industrie": 10,
+            "transport": 0,
+            "agriculture": -5,
+            "logement": 0
+        },
+        "prerequis": [],
+        "source": "",
+        "info": "",
+        "type": "action"
+    },
+    "32": {
+        "id": 32,
+        "nom": "Une fin du conflit ?",
+        "description": "Pour emporter vos ennemis dans votre chute, vous finacez une équipe de scientifiques pour développer une bombe à carbone",
+        "effets": {
+            "industrie": 100,
+            "transport": 100,
+            "agriculture": 100,
+            "logement": 100
+        },
+        "prerequis": [
+            18
+        ],
+        "source": "",
+        "info": "",
         "type": "action"
     }
 }

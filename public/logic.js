@@ -146,8 +146,7 @@ function partieTermine() {
     return ((industrie > 100 ||
         transport > 100 ||
         agriculture > 100 ||
-        logement > 100) &&
-        carteJoues.length <= allCartes.length);
+        logement > 100) || carteJoues.length == allCartes.length || boutonVertRestant == 0);
 }
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
@@ -167,6 +166,10 @@ var startX = 0;
 var isClicked = false;
 var index = 0;
 function boucle() {
+    if (partieTermine()) {
+        var carteActuelle_1 = null;
+    }
+    ;
     if (index == 0) {
         carteActuelle = allCartes[0];
     }
@@ -201,10 +204,18 @@ function delay(ms) {
 }
 function actionCarte(event) {
     return __awaiter(this, void 0, void 0, function () {
+<<<<<<< HEAD
         var endX, direction, card, card;
+=======
+        var carteActuelle_2, endX, direction, card, card, rickrollDiv;
+>>>>>>> 3f259bd8a1c8e052f7dd681e1ddafbec4fe35ceb
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (partieTermine()) {
+                        carteActuelle_2 = null;
+                    }
+                    ;
                     endX = event.clientX;
                     if (isClicked == false)
                         return [2 /*return*/];
@@ -267,6 +278,10 @@ function rickrollFunc() {
     document.body.appendChild(rickrollDiv);
 }
 function rotateCard(event) {
+    if (partieTermine()) {
+        var carteActuelle_3 = null;
+    }
+    ;
     if (!isClicked || div == null)
         return;
     // Calculate the rotation angle based on the mouse position
@@ -279,10 +294,14 @@ function rotateCard(event) {
 }
 function greenButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var card;
+        var carteActuelle_4, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (partieTermine()) {
+                        carteActuelle_4 = null;
+                    }
+                    ;
                     if (carteActuelle == null) {
                         console.log("Game over, no new cards will be generated.");
                         return [2 /*return*/];
@@ -309,10 +328,14 @@ function greenButton(event) {
 }
 function redButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var card;
+        var carteActuelle_5, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (partieTermine()) {
+                        carteActuelle_5 = null;
+                    }
+                    ;
                     if (carteActuelle == null) {
                         console.log("Game over, no new cards will be generated.");
                         return [2 /*return*/];
@@ -339,7 +362,12 @@ function redButton(event) {
 }
 function keyboardHandler(event) {
     return __awaiter(this, void 0, void 0, function () {
+        var carteActuelle_6;
         return __generator(this, function (_a) {
+            if (partieTermine()) {
+                carteActuelle_6 = null;
+            }
+            ;
             // Arrow and D and Q
             if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "q") {
                 if (event.key == "ArrowLeft" || event.key == "q") {
