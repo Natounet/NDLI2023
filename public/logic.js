@@ -278,6 +278,7 @@ function rotateCard(event) {
     if (partieTermine()) {
         var carteActuelle_3 = null;
         rickrollFunc();
+        throw new Error("Game over, no new cards will be generated.");
     }
     ;
     if (!isClicked || div == null)
@@ -299,6 +300,7 @@ function greenButton(event) {
                     if (partieTermine()) {
                         carteActuelle_4 = null;
                         rickrollFunc();
+                        throw new Error("Game over, no new cards will be generated.");
                     }
                     ;
                     if (carteActuelle == null) {
@@ -334,6 +336,7 @@ function redButton(event) {
                     if (partieTermine()) {
                         carteActuelle_5 = null;
                         rickrollFunc();
+                        throw new Error("Game over, no new cards will be generated.");
                     }
                     ;
                     if (carteActuelle == null) {
@@ -367,6 +370,7 @@ function keyboardHandler(event) {
             if (partieTermine()) {
                 carteActuelle_6 = null;
                 rickrollFunc();
+                throw new Error("Game over, no new cards will be generated.");
             }
             ;
             // Arrow and D and Q

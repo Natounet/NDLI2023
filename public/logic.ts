@@ -321,6 +321,8 @@ function rotateCard(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        throw new Error("Game over, no new cards will be generated.");
+
 
     };
     if (!isClicked || div == null) return;
@@ -341,6 +343,8 @@ async function greenButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        throw new Error("Game over, no new cards will be generated.");
+
 
     };
 
@@ -370,6 +374,8 @@ async function redButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        throw new Error("Game over, no new cards will be generated.");
+
 
     };
 
@@ -398,6 +404,7 @@ async function keyboardHandler(event: KeyboardEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        throw new Error("Game over, no new cards will be generated.");
 
     };
 
