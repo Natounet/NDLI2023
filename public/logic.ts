@@ -186,13 +186,14 @@ let index: number = 0;
 
 
 function boucle() {
+    
 
     if(index == 0) {
         carteActuelle = allCartes[0]
     }
 
     carteActuelle = carteSuivante()!;
-
+    
     if (carteActuelle == null) {
         console.log("Il n'y a plus de cartes candidates.");
         return;
@@ -232,6 +233,8 @@ function boucle() {
 function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
 
 async function actionCarte(event: MouseEvent){
 
@@ -317,10 +320,71 @@ function rotateCard(event: MouseEvent) {
     tkt.style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
 }
 
+async function greenButton(event: MouseEvent) {
+    console.log("tkt");
+
+    if(carteActuelle == null) {
+        console.log("Game over, no new cards will be generated.");
+        return;
+    }
+    else{
+        carteActuelle.boutonVert();
+    }
+    // add translation to go outside of the screen
+    let card = div.getElementsByTagName("div")[0];
+    card.style.transition =
+        "transform 1s ease-out, opacity 1s ease-out";
+    card.style.transform = `translateX(400%)`;
+    card.style.opacity = "0";
+
+    await delay(1000);
+    div.remove();
+
+    if (!partieTermine()) {
+        boucle();
+    }
+}
+
+async function redButton(event: MouseEvent) {
+    console.log("tkt");
+    if(carteActuelle == null) {
+        console.log("Game over, no new cards will be generated.");
+        return;
+    }
+    else{
+        carteActuelle.boutonRouge();
+    }                // add translation to go outside of the screen
+    let card = div.getElementsByTagName("div")[0];
+    card.style.transition =
+        "transform 1s ease-out, opacity 1s ease-out";
+    card.style.transform = `translateX(-400%)`;
+    card.style.opacity = "0";
+
+    await delay(1000);
+    div.remove();
+
+    if (!partieTermine()) {
+        boucle();
+    }
+}
+
+async function keyboardHandler(event: KeyboardEvent) {
+
+    // Arrow and D and Q
+    if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "q") {
+        if (event.key == "ArrowLeft" || event.key == "q") {
+            redButton(event as unknown as MouseEvent);
+        } else {
+            greenButton(event as unknown as MouseEvent);
+        }
+    }
+
+}
 
 async function main() {
     allCartes = await creerCarte();
 
+    // Cards listeners
     document.addEventListener("mousemove", rotateCard);
     document.addEventListener("mouseup", actionCarte) ;
 
@@ -331,6 +395,7 @@ async function main() {
         document.getElementById("theme-selector")!.style.display = val == "none" ? "block" : "none";
     });
 
+    // Theme buttons listeners
     document.getElementById("classic-theme-btn")?.addEventListener("click", () => {
         root.style.setProperty('--primary-color', '#1A4536');
         root.style.setProperty('--accent-green', '#3fe97d');
@@ -339,16 +404,18 @@ async function main() {
         document.getElementById("theme-selector")!.style.display = "none";
     })
     
-    document.getElementById("contrast-theme-btn")?.addEventListener("click", () => {
-        root.style.setProperty('--primary-color', '#0E271E');
-        root.style.setProperty('--accent-green', '#DCEA3B');
-        root.style.setProperty('--accent-saumon', '#0E271E');
-        root.style.setProperty('--secondary-color', '#0E271E');
-        document.getElementById("theme-selector")!.style.display = "none";
-    })
+
+    // Buttons listenerss
+    document.getElementsByClassName("correctButton")[0].addEventListener("mouseup", greenButton as unknown as EventListener);
+    document.getElementsByClassName("wrongButton")[0].addEventListener("mouseup", redButton as unknown as EventListener);
+
+    // Keyboard listeners
+    document.addEventListener("keydown", keyboardHandler);
 
     boucle();
 }
+
+
 
 function openDialog(effet: string) {
     let dialogueDiv = document.createElement("dialog");

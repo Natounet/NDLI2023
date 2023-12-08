@@ -273,15 +273,94 @@ function rotateCard(event) {
     tkt.style.transition = "none";
     tkt.style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
 }
+function greenButton(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var card;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("tkt");
+                    if (carteActuelle == null) {
+                        console.log("Game over, no new cards will be generated.");
+                        return [2 /*return*/];
+                    }
+                    else {
+                        carteActuelle.boutonVert();
+                    }
+                    card = div.getElementsByTagName("div")[0];
+                    card.style.transition =
+                        "transform 1s ease-out, opacity 1s ease-out";
+                    card.style.transform = "translateX(400%)";
+                    card.style.opacity = "0";
+                    return [4 /*yield*/, delay(1000)];
+                case 1:
+                    _a.sent();
+                    div.remove();
+                    if (!partieTermine()) {
+                        boucle();
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function redButton(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var card;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("tkt");
+                    if (carteActuelle == null) {
+                        console.log("Game over, no new cards will be generated.");
+                        return [2 /*return*/];
+                    }
+                    else {
+                        carteActuelle.boutonRouge();
+                    } // add translation to go outside of the screen
+                    card = div.getElementsByTagName("div")[0];
+                    card.style.transition =
+                        "transform 1s ease-out, opacity 1s ease-out";
+                    card.style.transform = "translateX(-400%)";
+                    card.style.opacity = "0";
+                    return [4 /*yield*/, delay(1000)];
+                case 1:
+                    _a.sent();
+                    div.remove();
+                    if (!partieTermine()) {
+                        boucle();
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function keyboardHandler(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            // Arrow and D and Q
+            if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "q") {
+                if (event.key == "ArrowLeft" || event.key == "q") {
+                    redButton(event);
+                }
+                else {
+                    greenButton(event);
+                }
+            }
+            return [2 /*return*/];
+        });
+    });
+}
 function main() {
-    var _a, _b;
+    var _a;
     return __awaiter(this, void 0, void 0, function () {
         var root;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
-                    allCartes = _c.sent();
+                    allCartes = _b.sent();
+                    // Cards listeners
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
                     root = document.querySelector(':root');
@@ -289,6 +368,7 @@ function main() {
                         var val = document.getElementById("theme-selector").style.display;
                         document.getElementById("theme-selector").style.display = val == "none" ? "block" : "none";
                     });
+                    // Theme buttons listeners
                     (_a = document.getElementById("classic-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#1A4536');
                         root.style.setProperty('--accent-green', '#3fe97d');
@@ -296,13 +376,11 @@ function main() {
                         root.style.setProperty('--secondary-color', '#1B7958');
                         document.getElementById("theme-selector").style.display = "none";
                     });
-                    (_b = document.getElementById("contrast-theme-btn")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
-                        root.style.setProperty('--primary-color', '#0E271E');
-                        root.style.setProperty('--accent-green', '#DCEA3B');
-                        root.style.setProperty('--accent-saumon', '#0E271E');
-                        root.style.setProperty('--secondary-color', '#0E271E');
-                        document.getElementById("theme-selector").style.display = "none";
-                    });
+                    // Buttons listenerss
+                    document.getElementsByClassName("correctButton")[0].addEventListener("mouseup", greenButton);
+                    document.getElementsByClassName("wrongButton")[0].addEventListener("mouseup", redButton);
+                    // Keyboard listeners
+                    document.addEventListener("keydown", keyboardHandler);
                     boucle();
                     return [2 /*return*/];
             }

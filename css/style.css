@@ -90,8 +90,8 @@ div.carte {
     left: 50%;
     transform: translateX(-50%) translateY(1000%) rotate(0deg);
     transition: transform 1s linear;
-    width: 250px;
-    height: 350px;
+    width: 300px;
+    height: 450px;
     border: 2px  black;
     border-radius: 20px;
     padding: 30px 30px;
@@ -110,7 +110,7 @@ div.carte {
 }
 
 div.carte_interieur {
-    height: 280px;
+    height: 320px;
     padding: 20px;
     border-radius: 10px;
     font-weight: bold;
