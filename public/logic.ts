@@ -182,9 +182,14 @@ function genererAffichageCarte(carte: Carte): string {
 let div;
 let startX: number = 0;
 let isClicked: boolean = false;
+let index: number = 0;
 
 
 function boucle() {
+
+    if(index == 0) {
+        carteActuelle = allCartes[0]
+    }
 
     carteActuelle = carteSuivante()!;
 
@@ -219,7 +224,7 @@ function boucle() {
     });
 
 
-
+    index++;
 
     
 }
