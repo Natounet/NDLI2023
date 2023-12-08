@@ -368,8 +368,11 @@ function redButton(event) {
                 case 0:
                     if (partieTermine()) {
                         carteActuelle_6 = null;
-                        rickrollFunc();
-                        return [2 /*return*/];
+                        if (!rick) {
+                            rickrollFunc();
+                            rick = true;
+                        }
+                        ;
                     }
                     ;
                     if (carteActuelle == null) {
@@ -402,8 +405,11 @@ function keyboardHandler(event) {
         return __generator(this, function (_a) {
             if (partieTermine()) {
                 carteActuelle_7 = null;
-                rickrollFunc();
-                return [2 /*return*/];
+                if (!rick) {
+                    rickrollFunc();
+                    rick = true;
+                }
+                ;
             }
             ;
             // Arrow and D and Q

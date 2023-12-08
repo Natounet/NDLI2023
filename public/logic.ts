@@ -406,9 +406,10 @@ async function greenButton(event: MouseEvent) {
 async function redButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        if(!rick){
         rickrollFunc()
-        return;
-
+        rick = true;
+        };
     };
 
     if (carteActuelle == null) {
@@ -435,8 +436,10 @@ async function redButton(event: MouseEvent) {
 async function keyboardHandler(event: KeyboardEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        if(!rick){
         rickrollFunc()
-        return;
+        rick = true;
+        };
     };
 
     // Arrow and D and Q
