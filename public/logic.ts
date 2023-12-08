@@ -16,6 +16,11 @@ type effet = {
     logement: number;
 };
 
+enum type {
+    info,
+    action
+}
+
 class Carte {
     id: number;
     nom: string;
@@ -24,6 +29,7 @@ class Carte {
     prerequis: number[];
     source: string;
     info: string;
+    type: type;
 
     constructor(
         id: number,
@@ -32,7 +38,8 @@ class Carte {
         effets: effet,
         prerequis: number[],
         source: string,
-        info: string
+        info: string,
+        type: type,
     ) {
         this.id = id;
         this.nom = nom;
@@ -41,9 +48,12 @@ class Carte {
         this.prerequis = prerequis;
         this.source = source;
         this.info = info;
+        this.type = type;
     }
 
     boutonVert() {
+        if(this.type == type.info) return;
+
         if (boutonVertRestant > 0) {
             // Vérification si les prérequis sont satisfait.
             if (this.estJouable()) {
@@ -88,6 +98,8 @@ class Carte {
     }
 
     boutonRouge() {
+        if(this.type == type.info) return;
+
         // Vérification si les prérequis sont satisfait.
         if (this.estJouable()) {
             agriculture -= this.effets.agriculture;
@@ -129,7 +141,8 @@ async function creerCarte(): Promise<Carte[]> {
                 obj.effets,
                 obj.prerequis,
                 obj.source,
-                obj.info
+                obj.info,
+                obj.type
             )
         )
     );
@@ -219,7 +232,8 @@ async function acionCarte(event: MouseEvent){
 
     // Listen to mouseup events on the document
     let endX = event.clientX;
-
+    
+    if(isClicked == false) return;
 
     isClicked = false;
 
