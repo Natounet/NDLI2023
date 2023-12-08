@@ -299,10 +299,11 @@ function rotateCard(event: MouseEvent) {
 
 
 
-    div.getElementsByTagName(
-        "div"
-    )[0].style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
+    let tkt = div.getElementsByTagName("div")[0];
+    tkt.style.transition = "none";
+    tkt.style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
 }
+
 
 async function main() {
     allCartes = await creerCarte();
@@ -342,7 +343,8 @@ function openDialog(effet: string) {
     dialogueDiv.id = "dialog-" + effet;
 
     let content = document.createElement("div")
-    content.textContent = effet;
+    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
+    content.textContent = jsonObject[effet];
 
     let closeButton = document.createElement("button");
     closeButton.classList.add("dialog-button");

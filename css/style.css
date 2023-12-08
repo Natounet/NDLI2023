@@ -189,6 +189,7 @@ div.carte_interieur {
     border-radius: 20px;
     padding: 1%;
     border: white solid 5px ;
+    z-index: 99999;
 }
 
 .svg-container:hover{
@@ -265,4 +266,42 @@ svg.second{
 .dialog-button svg:hover{
     cursor: pointer;
     transform:scale(3);
+}
+
+.correct{
+    justify-content: center;
+    align-items: center;
+    transform: scale(2);
+    stroke: #3fe97d;
+}
+
+.wrong{
+    justify-content: center;
+    align-items: center;
+    transform: scale(2);
+    stroke: #FF9999;
+}
+
+.wrongButton{
+    display: flex;
+    position: absolute;
+    left: 25%;
+    bottom: 20%;
+    border-radius: 100%;
+    background-color: white;
+    padding: 1.5%;
+    z-index: 999999;
+    outline: none;
+}
+
+.correctButton{
+    display: flex;
+    position: absolute;
+    right: 25%;
+    bottom: 20%;
+    border-radius: 100%;
+    background-color: white;
+    padding: 1.5%;
+    z-index: 999999;
+    outline: none;
 }

@@ -255,7 +255,9 @@ function rotateCard(event) {
     var rotationAngle = ((event.clientX - window.innerWidth / 2) /
         (window.innerWidth / 2)) *
         30; // Adjust the divisor to change the rotation speed
-    div.getElementsByTagName("div")[0].style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
+    var tkt = div.getElementsByTagName("div")[0];
+    tkt.style.transition = "none";
+    tkt.style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
 }
 function main() {
     var _a, _b;
@@ -298,7 +300,8 @@ function openDialog(effet) {
     dialogueDiv.classList.add("dialog-container");
     dialogueDiv.id = "dialog-" + effet;
     var content = document.createElement("div");
-    content.textContent = effet;
+    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
+    content.textContent = jsonObject[effet];
     var closeButton = document.createElement("button");
     closeButton.classList.add("dialog-button");
     closeButton.onclick = function () {
