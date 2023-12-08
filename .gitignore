@@ -1,1 +1,5 @@
 node_modules
+*.js
+.prettierrc
+public/logic.js
+```

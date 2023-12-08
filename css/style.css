@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #1A4536;
+    /*background: linear-gradient(45deg, red, purple);*/
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#image-fond-industrie {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    transform-origin: center 40%;
+    transform:  rotate(-30deg) scale(5);
+}
+#image-fond-industrie > * {
+    stroke: #1B7958;
+    fill: none;
+}
+
+#image-fond-agriculture {
+    position: absolute;
+    bottom: 0px;
+    left: 40%;
+    transform-origin: center 70%;
+    transform:  rotate(-25deg) scale(5);
+}
+#image-fond-agriculture > * {
+    fill: #1B7958;
+    stroke: #1A4536;
+    stroke-width: 2;
+}
+
+#image-fond-transports {
+    position: absolute;
+    bottom: 0px;
+    left: 55%;
+    transform-origin: center 70%;
+    transform: rotate(15deg) scale(5);
+    z-index: 1;
+}
+#image-fond-transports > * {
+    fill: #1B7958;
+    stroke: #1A4536;
+    stroke-width: 2;
+}
+
+#image-fond-logement {
+    position: absolute;
+    bottom: 0px;
+    left: 80%;
+    transform-origin: center 70%;
+    transform: rotate(30deg) scale(5);
+    z-index: 0;
+}
+#image-fond-logement > * {
+    stroke: #1B7958;
+    fill: none;
+}
+
+
+h1 {
+    color: white;
+    text-align: center;
+    margin: 1%;
+}
+
+body {
+    height: 100vh;
+}
+
+
+div.carte {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(1000%) rotate(0deg);
+    transition: transform 1s linear;
+    width: 250px;
+    height: 350px;
+    border: 2px  black;
+    border-radius: 20px;
+    padding: 30px 30px;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 15px -2px #000000; 
+    box-shadow: 0px 0px 15px -2px #000000;
+    cursor: pointer;
+    z-index: 9999;
+
+}
+
+.carte h3 {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+div.carte_interieur {
+    height: 280px;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: #3fe97d;
+    overflow-wrap: break-word;
+}
+
+
+
+#theme {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    z-index: 9999;
+}
+
+#theme-button {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s ease-out;
+}
+#theme-button > svg {
+    width: 30px;
+    height: 30px;
+    transition: fill 0.1s ease-out;
+}
+#theme-button:hover {
+    background-color: #3fe97d;
+}
+#theme-selector {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    border: 3px solid #1A4536;
+}
+
+
+#theme-selector > * {
+    padding: 10px 15px 10px 15px; 
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-out;
+}
+#theme-selector > *:hover {
+    background-color: #3fe97d;
+    border-radius: 10px;
+
+}
+
+.jauge{
+    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.svg-container{
+    text-align: center;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    padding: 1%;
+    border: white solid 5px ;
+}
+
+.svg-container:hover{
+    border: #3fe97d solid 5px;
+    cursor: pointer;
+}
+
+.top-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+.bottom-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    font-weight: bold;
+    user-select: none;
+}
+
+/*svg{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    fill: none; /* Set fill to none to make the border visible 
+}*/
+
+svg.first{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    fill:  #FF9999;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+svg.second{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    fill: transparent;
+}
+
+.dialog-container{
+    padding: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.dialog-button{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    text-decoration: none;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.dialog-button svg{
+    fill: red;
+    stroke: white;
+    transform:scale(2);
+}
+
+.dialog-button svg:hover{
+    cursor: pointer;
+    transform:scale(3);
+}
