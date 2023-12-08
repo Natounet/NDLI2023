@@ -285,9 +285,10 @@ function rotateCard(event: MouseEvent) {
 
 
 
-    div.getElementsByTagName(
-        "div"
-    )[0].style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
+    let tkt = div.getElementsByTagName("div")[0];
+    tkt.style.transition = "none";
+    tkt.style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
+
 }
 
 async function main() {
