@@ -1,91 +1,121 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="../css/style.css" rel="stylesheet" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <h1>Adopte un climatosceptique</h1>
+    <head>
+        <link href="../css/style.css" rel="stylesheet" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <h1>Adopte un climatosceptique</h1>
 
-    <!-- Industrie -->
-    <svg
-      id="image-fond-industrie"
-      width="103"
-      height="118"
-      viewBox="0 0 103 118"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2.62236 113.653V115.668H4.63721H38.9367H59.8379H98.4248H100.44V113.653V12.914V10.8991H98.4248H96.6881V4.83331V2.81847H94.6733H85.0266H83.0117V4.83331V10.8991H80.2032H78.1884V12.914V65.3244L54.1183 46.3479L50.856 43.776V47.9301V65.2189L27.8884 46.3726L24.5955 43.6705V47.9301V64.6806L6.04795 46.4916L2.62236 43.1322V47.9301V113.653Z"
-        stroke="black"
-        stroke-width="4.02969"
-      />
-    </svg>
+        <div id="theme">
+            <button id="theme-button">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-palette"
+                >
+                    <circle cx="13.5" cy="6.5" r=".5" />
+                    <circle cx="17.5" cy="10.5" r=".5" />
+                    <circle cx="8.5" cy="7.5" r=".5" />
+                    <circle cx="6.5" cy="12.5" r=".5" />
+                    <path
+                        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"
+                    />
+                </svg>
+            </button>
+            <div id="theme-selector">
+                <p>Classique</p>
+                <p>Contraste</p>
+            </div>
+        </div>
+        
 
-    <!-- Agriculture -->
-    <svg
-      width="77"
-      height="131"
-      viewBox="0 0 77 131"
-      xmlns="http://www.w3.org/2000/svg"
-      id="image-fond-agriculture"
-    >
-      <path
-        d="M37.3748 111.723L38.3816 130.525L39.3884 111.723C51.4709 106.445 75.4345 93.3166 74.629 83.0249C73.8235 72.7332 48.7859 88.6326 38.3815 97.8687C27.9772 88.6326 2.93972 72.7332 2.13422 83.0249C1.32872 93.3166 25.2923 106.445 37.3748 111.723Z"
-        stroke="black"
-        stroke-width="3.22375"
-      />
-      <path
-        d="M10.1891 59.2749C9.38357 69.5666 31.3333 79.0666 38.3815 83.0249C45.4298 79.0666 67.3796 69.5666 66.5741 59.2749C65.7686 48.9832 44.4229 59.275 38.3815 65.2125C32.3402 59.275 10.9946 48.9832 10.1891 59.2749Z"
-        stroke="black"
-        stroke-width="3.22375"
-      />
-      <path
-        d="M16.2303 30.577C15.4248 40.8687 31.3333 47.4 38.3815 51.3583C45.4298 47.4 61.3384 40.8687 60.5329 30.577C59.7274 20.2854 44.4229 33.5458 38.3815 39.4833C32.3402 33.5458 17.0358 20.2854 16.2303 30.577Z"
-        stroke="black"
-        stroke-width="3.22375"
-      />
-      <path
-        d="M38.3815 25.6291C34.0184 18.3722 27.5753 1.87907 37.3747 1.87909C48.4503 1.87911 42.0734 17.0527 38.3815 25.6291Z"
-        stroke="black"
-        stroke-width="3.22375"
-      />
-    </svg>
+        <!-- Industrie -->
+        <svg
+            id="image-fond-industrie"
+            width="103"
+            height="118"
+            viewBox="0 0 103 118"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M2.62236 113.653V115.668H4.63721H38.9367H59.8379H98.4248H100.44V113.653V12.914V10.8991H98.4248H96.6881V4.83331V2.81847H94.6733H85.0266H83.0117V4.83331V10.8991H80.2032H78.1884V12.914V65.3244L54.1183 46.3479L50.856 43.776V47.9301V65.2189L27.8884 46.3726L24.5955 43.6705V47.9301V64.6806L6.04795 46.4916L2.62236 43.1322V47.9301V113.653Z"
+                stroke="black"
+                stroke-width="4.02969"
+            />
+        </svg>
 
-    <!-- Transports -->
-    <svg
-      id="image-fond-transports"
-      width="132"
-      height="121"
-      viewBox="0 0 132 121"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M47.9981 109.138L53.8693 120.146L65.6117 113.541L76.4487 119.637L83.7876 108.628L72.2168 102.533V43.8207L131.663 83.4512V71.7088L116.985 56.297L75.8863 24.0054L75.1524 10.0613L65.6117 0.52066L53.8693 10.0613V24.7393L14.2388 56.297L0.294739 71.7088V83.4512L59.0066 43.8207V102.533L47.9981 109.138Z"
-        stroke="black"
-        stroke-width="4.02969"
-      />
-    </svg>
+        <!-- Agriculture -->
+        <svg
+            width="77"
+            height="131"
+            viewBox="0 0 77 131"
+            xmlns="http://www.w3.org/2000/svg"
+            id="image-fond-agriculture"
+        >
+            <path
+                d="M37.3748 111.723L38.3816 130.525L39.3884 111.723C51.4709 106.445 75.4345 93.3166 74.629 83.0249C73.8235 72.7332 48.7859 88.6326 38.3815 97.8687C27.9772 88.6326 2.93972 72.7332 2.13422 83.0249C1.32872 93.3166 25.2923 106.445 37.3748 111.723Z"
+                stroke="black"
+                stroke-width="3.22375"
+            />
+            <path
+                d="M10.1891 59.2749C9.38357 69.5666 31.3333 79.0666 38.3815 83.0249C45.4298 79.0666 67.3796 69.5666 66.5741 59.2749C65.7686 48.9832 44.4229 59.275 38.3815 65.2125C32.3402 59.275 10.9946 48.9832 10.1891 59.2749Z"
+                stroke="black"
+                stroke-width="3.22375"
+            />
+            <path
+                d="M16.2303 30.577C15.4248 40.8687 31.3333 47.4 38.3815 51.3583C45.4298 47.4 61.3384 40.8687 60.5329 30.577C59.7274 20.2854 44.4229 33.5458 38.3815 39.4833C32.3402 33.5458 17.0358 20.2854 16.2303 30.577Z"
+                stroke="black"
+                stroke-width="3.22375"
+            />
+            <path
+                d="M38.3815 25.6291C34.0184 18.3722 27.5753 1.87907 37.3747 1.87909C48.4503 1.87911 42.0734 17.0527 38.3815 25.6291Z"
+                stroke="black"
+                stroke-width="3.22375"
+            />
+        </svg>
 
-    <!-- Logement -->
-    <svg
-      id="image-fond-logement"
-      width="68"
-      height="91"
-      viewBox="0 0 68 91"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M22 50H2V89.5H22M22 50V89.5M22 50V2H66.5V89.5H22M33 11.5H38.5V22.5H33V11.5ZM47 11.5H52.5V22.5H47V11.5ZM33 30H38.5V41H33V30ZM47 30H52.5V41H47V30ZM33 48H38.5V59H33V48ZM47 48H52.5V59H47V48ZM33 65H38.5V76H33V65ZM47 65H52.5V76H47V65ZM9 57.5H14.5V68.5H9V57.5Z"
-        stroke="black"
-        stroke-width="3"
-      />
-    </svg>
+        <!-- Transports -->
+        <svg
+            id="image-fond-transports"
+            width="132"
+            height="121"
+            viewBox="0 0 132 121"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M47.9981 109.138L53.8693 120.146L65.6117 113.541L76.4487 119.637L83.7876 108.628L72.2168 102.533V43.8207L131.663 83.4512V71.7088L116.985 56.297L75.8863 24.0054L75.1524 10.0613L65.6117 0.52066L53.8693 10.0613V24.7393L14.2388 56.297L0.294739 71.7088V83.4512L59.0066 43.8207V102.533L47.9981 109.138Z"
+                stroke="black"
+                stroke-width="4.02969"
+            />
+        </svg>
 
-    <script src="logic.js"></script>
-  </body>
+        <!-- Logement -->
+        <svg
+            id="image-fond-logement"
+            width="68"
+            height="91"
+            viewBox="0 0 68 91"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M22 50H2V89.5H22M22 50V89.5M22 50V2H66.5V89.5H22M33 11.5H38.5V22.5H33V11.5ZM47 11.5H52.5V22.5H47V11.5ZM33 30H38.5V41H33V30ZM47 30H52.5V41H47V30ZM33 48H38.5V59H33V48ZM47 48H52.5V59H47V48ZM33 65H38.5V76H33V65ZM47 65H52.5V76H47V65ZM9 57.5H14.5V68.5H9V57.5Z"
+                stroke="black"
+                stroke-width="3"
+            />
+        </svg>
+
+        <script src="logic.js"></script>
+    </body>
 </html>
