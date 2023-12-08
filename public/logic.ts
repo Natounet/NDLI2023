@@ -157,6 +157,7 @@ function partieTermine(): boolean {
             agriculture > 100 ||
             logement > 100) &&
         carteJoues.length <= allCartes.length
+        || boutonVertRestant == 0
     );
 }
 

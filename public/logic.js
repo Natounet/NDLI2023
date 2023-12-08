@@ -147,7 +147,8 @@ function partieTermine() {
         transport > 100 ||
         agriculture > 100 ||
         logement > 100) &&
-        carteJoues.length <= allCartes.length);
+        carteJoues.length <= allCartes.length
+        || boutonVertRestant == 0);
 }
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
