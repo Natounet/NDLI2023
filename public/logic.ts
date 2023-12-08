@@ -243,6 +243,8 @@ async function actionCarte(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        throw new Error("Game over, no new cards will be generated.");
+
     };
     // Listen to mouseup events on the document
     let endX = event.clientX;
@@ -321,6 +323,7 @@ function rotateCard(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        return;
 
     };
     if (!isClicked || div == null) return;
@@ -341,6 +344,8 @@ async function greenButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        return;
+
 
     };
 
@@ -370,6 +375,7 @@ async function redButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
+        return;
 
     };
 
@@ -398,7 +404,7 @@ async function keyboardHandler(event: KeyboardEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
         rickrollFunc()
-
+        return;
     };
 
     // Arrow and D and Q
