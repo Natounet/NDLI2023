@@ -455,6 +455,20 @@ async function main() {
         document.getElementById("theme-selector")!.style.display = "none";
     })
 
+    document.getElementById("daltonian-theme-btn")?.addEventListener("click", () => {
+        root.style.setProperty('--primary-color', '#D81B60');
+        root.style.setProperty('--accent-green', '#1E88E5');
+        root.style.setProperty('--accent-saumon', '#FFC107');
+        root.style.setProperty('--secondary-color', '#004D40');
+        document.body.style.background = "var(--primary-color)";
+        document.body.style.animation = "none";
+        const audioElement = document.querySelector(".audio-tag");
+        if (audioElement) {
+            document.body.removeChild(audioElement);
+        }
+        document.getElementById("theme-selector")!.style.display = "none";
+    })
+
     document.getElementById("disco-theme-btn")?.addEventListener("click", () => {
         root.style.setProperty('--primary-color', '#ffbf66');
         root.style.setProperty('--accent-green', '');

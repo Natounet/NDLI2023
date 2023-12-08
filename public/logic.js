@@ -383,14 +383,14 @@ function keyboardHandler(event) {
     });
 }
 function main() {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function () {
         var root;
-        return __generator(this, function (_d) {
-            switch (_d.label) {
+        return __generator(this, function (_e) {
+            switch (_e.label) {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
-                    allCartes = _d.sent();
+                    allCartes = _e.sent();
                     // Cards listeners
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
@@ -426,7 +426,20 @@ function main() {
                         }
                         document.getElementById("theme-selector").style.display = "none";
                     });
-                    (_c = document.getElementById("disco-theme-btn")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+                    (_c = document.getElementById("daltonian-theme-btn")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+                        root.style.setProperty('--primary-color', '#D81B60');
+                        root.style.setProperty('--accent-green', '#1E88E5');
+                        root.style.setProperty('--accent-saumon', '#FFC107');
+                        root.style.setProperty('--secondary-color', '#004D40');
+                        document.body.style.background = "var(--primary-color)";
+                        document.body.style.animation = "none";
+                        var audioElement = document.querySelector(".audio-tag");
+                        if (audioElement) {
+                            document.body.removeChild(audioElement);
+                        }
+                        document.getElementById("theme-selector").style.display = "none";
+                    });
+                    (_d = document.getElementById("disco-theme-btn")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#ffbf66');
                         root.style.setProperty('--accent-green', '');
                         root.style.setProperty('--accent-saumon', '#00353f');
