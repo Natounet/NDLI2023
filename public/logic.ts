@@ -248,7 +248,6 @@ async function actionCarte(event: MouseEvent){
 
     let direction = endX > startX ? "right" : "left";
     if (direction == "right") {
-        console.log(carteActuelle);
         if(carteActuelle == null) {
             console.log("Game over, no new cards will be generated.");
             return;
@@ -321,7 +320,6 @@ function rotateCard(event: MouseEvent) {
 }
 
 async function greenButton(event: MouseEvent) {
-    console.log("tkt");
 
     if(carteActuelle == null) {
         console.log("Game over, no new cards will be generated.");
@@ -346,7 +344,6 @@ async function greenButton(event: MouseEvent) {
 }
 
 async function redButton(event: MouseEvent) {
-    console.log("tkt");
     if(carteActuelle == null) {
         console.log("Game over, no new cards will be generated.");
         return;
@@ -437,7 +434,6 @@ function openDialog(effet: string) {
     dialogueDiv.appendChild(closeButton);
     dialogueDiv.appendChild(content);
     document.body.appendChild(dialogueDiv);
-    console.log('test');
     (dialogueDiv as HTMLDialogElement).showModal();
 }
 

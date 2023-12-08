@@ -211,7 +211,6 @@ function actionCarte(event) {
                     isClicked = false;
                     direction = endX > startX ? "right" : "left";
                     if (direction == "right") {
-                        console.log(carteActuelle);
                         if (carteActuelle == null) {
                             console.log("Game over, no new cards will be generated.");
                             return [2 /*return*/];
@@ -279,7 +278,6 @@ function greenButton(event) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log("tkt");
                     if (carteActuelle == null) {
                         console.log("Game over, no new cards will be generated.");
                         return [2 /*return*/];
@@ -310,7 +308,6 @@ function redButton(event) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log("tkt");
                     if (carteActuelle == null) {
                         console.log("Game over, no new cards will be generated.");
                         return [2 /*return*/];
@@ -404,7 +401,6 @@ function openDialog(effet) {
     dialogueDiv.appendChild(closeButton);
     dialogueDiv.appendChild(content);
     document.body.appendChild(dialogueDiv);
-    console.log('test');
     dialogueDiv.showModal();
 }
 function closeDialog(effet) {
