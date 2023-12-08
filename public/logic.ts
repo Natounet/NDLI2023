@@ -113,14 +113,15 @@ class Carte {
     }
 
     estJouable(): boolean {
+        let a = true;
         this.prerequis.forEach((pr) => {
             // Prérequis non satisfait
             if (!(pr in carteJoues)) {
-                return false;
+                a = false;
             }
         });
 
-        return true;
+        return a;
     }
 }
 let allCartes: Carte[] = [];
@@ -148,6 +149,15 @@ async function creerCarte(): Promise<Carte[]> {
         )
     );
 
+    function shuffleArrayButKeepFirst(array: any[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            if (j === 0) j = 1; // Skip the first element
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    shuffleArrayButKeepFirst(allCartes);
     return allCartes;
 }
 
@@ -163,8 +173,11 @@ function partieTermine(): boolean {
 function carteSuivante(): Carte | null {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
 
-    for (let i = 0; i < allCartes.length; i++) {
-        if (!carteJoues.includes(i) && allCartes[i].estJouable()) {
+    for (let i:number = 0; i < allCartes.length; i++) {
+        if ((carteJoues.includes(allCartes[i].id)) || !allCartes[i].estJouable()) {
+            continue
+        }
+        else{
             return allCartes[i];
         }
     }
@@ -188,6 +201,10 @@ let index: number = 0;
 function boucle() {
     if (partieTermine()) {
         let carteActuelle = null;
+        if(!rick){
+        rickrollFunc()
+        rick = true;
+        }
     };
 
     if (index == 0) {
@@ -237,14 +254,16 @@ function delay(ms: number) {
 }
 
 
+let rick = false;
 
 async function actionCarte(event: MouseEvent) {
 
     if (partieTermine()) {
         let carteActuelle = null;
+        if(!rick){
         rickrollFunc()
-        throw new Error("Game over, no new cards will be generated.");
-
+        rick = true;
+        }
     };
     // Listen to mouseup events on the document
     let endX = event.clientX;
@@ -299,7 +318,14 @@ async function actionCarte(event: MouseEvent) {
 
     if (!partieTermine()) {
         boucle();
-    } 
+    }
+    else{
+        let carteActuelle = null;
+        if(!rick){
+        rickrollFunc()
+        rick = true;
+        }
+    }
 
 }
 
@@ -322,7 +348,12 @@ function rickrollFunc(){
 function rotateCard(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
-    };
+        if(!rick){
+        rickrollFunc()
+        rick = true;
+        }
+    }
+    
     if (!isClicked || div == null) return;
     // Calculate the rotation angle based on the mouse position
     let rotationAngle =
@@ -340,7 +371,11 @@ function rotateCard(event: MouseEvent) {
 async function greenButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        if(!rick){
         rickrollFunc()
+        rick = true;
+        }
+
         return;
 
 

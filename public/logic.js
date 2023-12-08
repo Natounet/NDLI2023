@@ -109,19 +109,29 @@ var Carte = /** @class */ (function () {
         }
     };
     Carte.prototype.estJouable = function () {
+        var a = true;
         this.prerequis.forEach(function (pr) {
             // Prérequis non satisfait
             if (!(pr in carteJoues)) {
-                return false;
+                a = false;
             }
         });
-        return true;
+        return a;
     };
     return Carte;
 }());
 var allCartes = [];
 function creerCarte() {
     return __awaiter(this, void 0, void 0, function () {
+        function shuffleArrayButKeepFirst(array) {
+            var _a;
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                if (j === 0)
+                    j = 1; // Skip the first element
+                _a = [array[j], array[i]], array[i] = _a[0], array[j] = _a[1];
+            }
+        }
         var allCartes, response, data, cartes;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -137,6 +147,7 @@ function creerCarte() {
                     cartes.forEach(function (obj) {
                         return allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info, obj.type));
                     });
+                    shuffleArrayButKeepFirst(allCartes);
                     return [2 /*return*/, allCartes];
             }
         });
@@ -151,7 +162,10 @@ function partieTermine() {
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
     for (var i = 0; i < allCartes.length; i++) {
-        if (!carteJoues.includes(i) && allCartes[i].estJouable()) {
+        if ((carteJoues.includes(allCartes[i].id)) || !allCartes[i].estJouable()) {
+            continue;
+        }
+        else {
             return allCartes[i];
         }
     }
@@ -168,6 +182,10 @@ var index = 0;
 function boucle() {
     if (partieTermine()) {
         var carteActuelle_1 = null;
+        if (!rick) {
+            rickrollFunc();
+            rick = true;
+        }
     }
     ;
     if (index == 0) {
@@ -202,16 +220,19 @@ function boucle() {
 function delay(ms) {
     return new Promise(function (resolve) { return setTimeout(resolve, ms); });
 }
+var rick = false;
 function actionCarte(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_2, endX, direction, card, card;
+        var carteActuelle_2, endX, direction, card, card, carteActuelle_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
                         carteActuelle_2 = null;
-                        rickrollFunc();
-                        throw new Error("Game over, no new cards will be generated.");
+                        if (!rick) {
+                            rickrollFunc();
+                            rick = true;
+                        }
                     }
                     ;
                     endX = event.clientX;
@@ -256,6 +277,13 @@ function actionCarte(event) {
                     if (!partieTermine()) {
                         boucle();
                     }
+                    else {
+                        carteActuelle_3 = null;
+                        if (!rick) {
+                            rickrollFunc();
+                            rick = true;
+                        }
+                    }
                     return [2 /*return*/];
             }
         });
@@ -276,6 +304,13 @@ function rickrollFunc() {
     document.body.appendChild(rickrollDiv);
 }
 function rotateCard(event) {
+    if (partieTermine()) {
+        var carteActuelle_4 = null;
+        if (!rick) {
+            rickrollFunc();
+            rick = true;
+        }
+    }
     if (!isClicked || div == null)
         return;
     // Calculate the rotation angle based on the mouse position
@@ -288,13 +323,16 @@ function rotateCard(event) {
 }
 function greenButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_3, card;
+        var carteActuelle_5, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
-                        carteActuelle_3 = null;
-                        rickrollFunc();
+                        carteActuelle_5 = null;
+                        if (!rick) {
+                            rickrollFunc();
+                            rick = true;
+                        }
                         return [2 /*return*/];
                     }
                     ;
@@ -324,12 +362,12 @@ function greenButton(event) {
 }
 function redButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_4, card;
+        var carteActuelle_6, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
-                        carteActuelle_4 = null;
+                        carteActuelle_6 = null;
                         rickrollFunc();
                         return [2 /*return*/];
                     }
@@ -360,10 +398,10 @@ function redButton(event) {
 }
 function keyboardHandler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_5;
+        var carteActuelle_7;
         return __generator(this, function (_a) {
             if (partieTermine()) {
-                carteActuelle_5 = null;
+                carteActuelle_7 = null;
                 rickrollFunc();
                 return [2 /*return*/];
             }
@@ -469,7 +507,7 @@ function openDialog(effet) {
     dialogueDiv.classList.add("dialog-container");
     dialogueDiv.id = "dialog-" + effet;
     var content = document.createElement("div");
-    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
+    var jsonObject = JSON.parse('{"industrie": "En France, l\'industrie représente 40% des émissions de gaz à effets de serres. ", "agriculture": "En France, l\'agriculture représente 25% des émissions de gaz à effets de serre.", "transport": "En France, le transport représente 15% des émissions de gaz à effets de serre.", "logement": "En France, l\'utilisation des bâtiments représente 20% des émissions de gaz à effets de serre."}');
     content.textContent = jsonObject[effet];
     var closeButton = document.createElement("button");
     closeButton.classList.add("dialog-button");
