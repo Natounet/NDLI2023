@@ -146,9 +146,7 @@ function partieTermine() {
     return ((industrie > 100 ||
         transport > 100 ||
         agriculture > 100 ||
-        logement > 100) &&
-        carteJoues.length <= allCartes.length
-        || boutonVertRestant == 0);
+        logement > 100) || carteJoues.length == allCartes.length || boutonVertRestant == 0);
 }
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
@@ -206,12 +204,14 @@ function delay(ms) {
 }
 function actionCarte(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_2, endX, direction, card, card, rickrollDiv;
+        var carteActuelle_2, endX, direction, card, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
                         carteActuelle_2 = null;
+                        rickrollFunc();
+                        throw new Error("Game over, no new cards will be generated.");
                     }
                     ;
                     endX = event.clientX;
@@ -256,25 +256,26 @@ function actionCarte(event) {
                     if (!partieTermine()) {
                         boucle();
                     }
-                    else {
-                        rickrollDiv = document.createElement("div");
-                        rickrollDiv.innerHTML = "<img src=\"../assets/rickroll.gif\">";
-                        rickrollDiv.style.position = "fixed";
-                        rickrollDiv.style.left = "50%";
-                        rickrollDiv.style.transform = "translateX(-50%)";
-                        rickrollDiv.style.zIndex = '999';
-                        document.body.appendChild(rickrollDiv);
-                    }
                     return [2 /*return*/];
             }
         });
     });
 }
+function rickrollFunc() {
+    var rickrollDiv = document.createElement("div");
+    rickrollDiv.innerHTML = "<img src=\"../assets/rickroll.gif\">";
+    rickrollDiv.style.position = "fixed";
+    rickrollDiv.style.left = "50%";
+    rickrollDiv.style.transform = "translateX(-50%)";
+    rickrollDiv.style.zIndex = '999';
+    var audio = document.createElement("audio");
+    audio.classList.add("audio-tag");
+    audio.src = '../assets/rickroll.mp3';
+    audio.autoplay = true; // Add the autoplay attribute to play the audio automatically
+    document.body.appendChild(audio);
+    document.body.appendChild(rickrollDiv);
+}
 function rotateCard(event) {
-    if (partieTermine()) {
-        var carteActuelle_3 = null;
-    }
-    ;
     if (!isClicked || div == null)
         return;
     // Calculate the rotation angle based on the mouse position
@@ -287,12 +288,14 @@ function rotateCard(event) {
 }
 function greenButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_4, card;
+        var carteActuelle_3, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
-                        carteActuelle_4 = null;
+                        carteActuelle_3 = null;
+                        rickrollFunc();
+                        return [2 /*return*/];
                     }
                     ;
                     if (carteActuelle == null) {
@@ -321,12 +324,14 @@ function greenButton(event) {
 }
 function redButton(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_5, card;
+        var carteActuelle_4, card;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (partieTermine()) {
-                        carteActuelle_5 = null;
+                        carteActuelle_4 = null;
+                        rickrollFunc();
+                        return [2 /*return*/];
                     }
                     ;
                     if (carteActuelle == null) {
@@ -355,10 +360,12 @@ function redButton(event) {
 }
 function keyboardHandler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var carteActuelle_6;
+        var carteActuelle_5;
         return __generator(this, function (_a) {
             if (partieTermine()) {
-                carteActuelle_6 = null;
+                carteActuelle_5 = null;
+                rickrollFunc();
+                return [2 /*return*/];
             }
             ;
             // Arrow and D and Q
@@ -375,14 +382,14 @@ function keyboardHandler(event) {
     });
 }
 function main() {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function () {
         var root;
-        return __generator(this, function (_d) {
-            switch (_d.label) {
+        return __generator(this, function (_e) {
+            switch (_e.label) {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
-                    allCartes = _d.sent();
+                    allCartes = _e.sent();
                     // Cards listeners
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
@@ -394,7 +401,7 @@ function main() {
                     // Theme buttons listeners
                     (_a = document.getElementById("classic-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#1A4536');
-                        root.style.setProperty('--accent-green', '#3fe97d');
+                        root.style.setProperty('--acce>nt-green', '#3fe97d');
                         root.style.setProperty('--accent-saumon', '#FF9999');
                         root.style.setProperty('--secondary-color', '#1B7958');
                         document.body.style.background = "var(--primary-color)";
@@ -418,7 +425,20 @@ function main() {
                         }
                         document.getElementById("theme-selector").style.display = "none";
                     });
-                    (_c = document.getElementById("disco-theme-btn")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+                    (_c = document.getElementById("daltonian-theme-btn")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+                        root.style.setProperty('--primary-color', '#D81B60');
+                        root.style.setProperty('--accent-green', '#1E88E5');
+                        root.style.setProperty('--accent-saumon', '#FFC107');
+                        root.style.setProperty('--secondary-color', '#004D40');
+                        document.body.style.background = "var(--primary-color)";
+                        document.body.style.animation = "none";
+                        var audioElement = document.querySelector(".audio-tag");
+                        if (audioElement) {
+                            document.body.removeChild(audioElement);
+                        }
+                        document.getElementById("theme-selector").style.display = "none";
+                    });
+                    (_d = document.getElementById("disco-theme-btn")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#ffbf66');
                         root.style.setProperty('--accent-green', '');
                         root.style.setProperty('--accent-saumon', '#00353f');

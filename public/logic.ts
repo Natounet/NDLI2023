@@ -109,6 +109,7 @@ class Carte {
 
             carteJoues.push(this.id);
         }
+
     }
 
     estJouable(): boolean {
@@ -155,9 +156,7 @@ function partieTermine(): boolean {
         (industrie > 100 ||
             transport > 100 ||
             agriculture > 100 ||
-            logement > 100) &&
-        carteJoues.length <= allCartes.length
-        || boutonVertRestant == 0
+            logement > 100) || carteJoues.length == allCartes.length || boutonVertRestant == 0
     );
 }
 
@@ -243,6 +242,9 @@ async function actionCarte(event: MouseEvent) {
 
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+        throw new Error("Game over, no new cards will be generated.");
+
     };
     // Listen to mouseup events on the document
     let endX = event.clientX;
@@ -297,23 +299,34 @@ async function actionCarte(event: MouseEvent) {
 
     if (!partieTermine()) {
         boucle();
-    } else {
-        let rickrollDiv = document.createElement("div");
-        rickrollDiv.innerHTML = `<img src="../assets/rickroll.gif">`;
-        rickrollDiv.style.position = "fixed";
-        rickrollDiv.style.left = "50%";
-        rickrollDiv.style.transform = "translateX(-50%)";
-        rickrollDiv.style.zIndex = '999';
-        document.body.appendChild(rickrollDiv);
-    }
+    } 
 
+}
+
+function rickrollFunc(){
+    let rickrollDiv = document.createElement("div");
+    rickrollDiv.innerHTML = `<img src="../assets/rickroll.gif">`;
+    rickrollDiv.style.position = "fixed";
+    rickrollDiv.style.left = "50%";
+    rickrollDiv.style.transform = "translateX(-50%)";
+    rickrollDiv.style.zIndex = '999';
+    const audio = document.createElement("audio");
+    audio.classList.add("audio-tag");
+    audio.src = '../assets/rickroll.mp3';
+    audio.autoplay = true; // Add the autoplay attribute to play the audio automatically
+    document.body.appendChild(audio);
+    document.body.appendChild(rickrollDiv);
 }
 
 
 function rotateCard(event: MouseEvent) {
+<<<<<<< HEAD
     if (partieTermine()) {
         let carteActuelle = null;
     };
+=======
+    
+>>>>>>> 0bb9b66e1b711bc2a451454bacc86487842b0ae4
     if (!isClicked || div == null) return;
     // Calculate the rotation angle based on the mouse position
     let rotationAngle =
@@ -331,6 +344,10 @@ function rotateCard(event: MouseEvent) {
 async function greenButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+        return;
+
+
     };
 
     if (carteActuelle == null) {
@@ -358,6 +375,9 @@ async function greenButton(event: MouseEvent) {
 async function redButton(event: MouseEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+        return;
+
     };
 
     if (carteActuelle == null) {
@@ -384,6 +404,8 @@ async function redButton(event: MouseEvent) {
 async function keyboardHandler(event: KeyboardEvent) {
     if (partieTermine()) {
         let carteActuelle = null;
+        rickrollFunc()
+        return;
     };
 
     // Arrow and D and Q
@@ -414,7 +436,7 @@ async function main() {
     // Theme buttons listeners
     document.getElementById("classic-theme-btn")?.addEventListener("click", () => {
         root.style.setProperty('--primary-color', '#1A4536');
-        root.style.setProperty('--accent-green', '#3fe97d');
+        root.style.setProperty('--acce>nt-green', '#3fe97d');
         root.style.setProperty('--accent-saumon', '#FF9999');
         root.style.setProperty('--secondary-color', '#1B7958');
         document.body.style.background = "var(--primary-color)";
@@ -431,6 +453,20 @@ async function main() {
         root.style.setProperty('--accent-green', '#DCEA3B');
         root.style.setProperty('--accent-saumon', '#0E271E');
         root.style.setProperty('--secondary-color', '#0E271E');
+        document.body.style.background = "var(--primary-color)";
+        document.body.style.animation = "none";
+        const audioElement = document.querySelector(".audio-tag");
+        if (audioElement) {
+            document.body.removeChild(audioElement);
+        }
+        document.getElementById("theme-selector")!.style.display = "none";
+    })
+
+    document.getElementById("daltonian-theme-btn")?.addEventListener("click", () => {
+        root.style.setProperty('--primary-color', '#D81B60');
+        root.style.setProperty('--accent-green', '#1E88E5');
+        root.style.setProperty('--accent-saumon', '#FFC107');
+        root.style.setProperty('--secondary-color', '#004D40');
         document.body.style.background = "var(--primary-color)";
         document.body.style.animation = "none";
         const audioElement = document.querySelector(".audio-tag");
