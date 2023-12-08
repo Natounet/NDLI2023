@@ -274,14 +274,14 @@ function rotateCard(event) {
     tkt.style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
 }
 function main() {
-    var _a, _b;
+    var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function () {
         var root;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
-                    allCartes = _c.sent();
+                    allCartes = _d.sent();
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
                     root = document.querySelector(':root');
@@ -294,6 +294,12 @@ function main() {
                         root.style.setProperty('--accent-green', '#3fe97d');
                         root.style.setProperty('--accent-saumon', '#FF9999');
                         root.style.setProperty('--secondary-color', '#1B7958');
+                        document.body.style.background = "var(--primary-color)";
+                        document.body.style.animation = "none";
+                        var audioElement = document.querySelector(".audio-tag");
+                        if (audioElement) {
+                            document.body.removeChild(audioElement);
+                        }
                         document.getElementById("theme-selector").style.display = "none";
                     });
                     (_b = document.getElementById("contrast-theme-btn")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
@@ -301,6 +307,27 @@ function main() {
                         root.style.setProperty('--accent-green', '#DCEA3B');
                         root.style.setProperty('--accent-saumon', '#0E271E');
                         root.style.setProperty('--secondary-color', '#0E271E');
+                        document.body.style.background = "var(--primary-color)";
+                        document.body.style.animation = "none";
+                        var audioElement = document.querySelector(".audio-tag");
+                        if (audioElement) {
+                            document.body.removeChild(audioElement);
+                        }
+                        document.getElementById("theme-selector").style.display = "none";
+                    });
+                    (_c = document.getElementById("disco-theme-btn")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+                        root.style.setProperty('--primary-color', '#ffbf66');
+                        root.style.setProperty('--accent-green', '');
+                        root.style.setProperty('--accent-saumon', '#00353f');
+                        root.style.setProperty('--secondary-color', '#08c5d1');
+                        document.body.style.backgroundSize = "1000%";
+                        document.body.style.backgroundPosition = "left";
+                        document.body.style.animation = "10s discoBg ease infinite";
+                        var audio = document.createElement("audio");
+                        audio.classList.add("audio-tag");
+                        audio.src = '../assets/discoMusic.mp3';
+                        audio.autoplay = true; // Add the autoplay attribute to play the audio automatically
+                        document.body.appendChild(audio);
                         document.getElementById("theme-selector").style.display = "none";
                     });
                     boucle();

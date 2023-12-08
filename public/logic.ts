@@ -336,6 +336,12 @@ async function main() {
         root.style.setProperty('--accent-green', '#3fe97d');
         root.style.setProperty('--accent-saumon', '#FF9999');
         root.style.setProperty('--secondary-color', '#1B7958');
+        document.body.style.background = "var(--primary-color)";
+        document.body.style.animation = "none";
+        const audioElement = document.querySelector(".audio-tag");
+        if (audioElement) {
+            document.body.removeChild(audioElement);
+        }
         document.getElementById("theme-selector")!.style.display = "none";
     })
     
@@ -344,6 +350,28 @@ async function main() {
         root.style.setProperty('--accent-green', '#DCEA3B');
         root.style.setProperty('--accent-saumon', '#0E271E');
         root.style.setProperty('--secondary-color', '#0E271E');
+        document.body.style.background = "var(--primary-color)";
+        document.body.style.animation = "none";
+        const audioElement = document.querySelector(".audio-tag");
+        if (audioElement) {
+            document.body.removeChild(audioElement);
+        }
+        document.getElementById("theme-selector")!.style.display = "none";
+    })
+
+    document.getElementById("disco-theme-btn")?.addEventListener("click", () => {
+        root.style.setProperty('--primary-color', '#ffbf66');
+        root.style.setProperty('--accent-green', '');
+        root.style.setProperty('--accent-saumon', '#00353f');
+        root.style.setProperty('--secondary-color', '#08c5d1');
+        document.body.style.backgroundSize = "1000%";
+        document.body.style.backgroundPosition = "left";
+        document.body.style.animation = "10s discoBg ease infinite";
+        const audio = document.createElement("audio");
+        audio.classList.add("audio-tag");
+        audio.src = '../assets/discoMusic.mp3';
+        audio.autoplay = true; // Add the autoplay attribute to play the audio automatically
+        document.body.appendChild(audio);
         document.getElementById("theme-selector")!.style.display = "none";
     })
 
