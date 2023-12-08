@@ -310,6 +310,29 @@ async function main() {
     document.addEventListener("mousemove", rotateCard);
     document.addEventListener("mouseup", acionCarte) ;
 
+
+    const root = document.querySelector(':root') as HTMLElement;
+    document.getElementById("theme-button")!.addEventListener("click", () => {
+        let val = document.getElementById("theme-selector")!.style.display;
+        document.getElementById("theme-selector")!.style.display = val == "none" ? "block" : "none";
+    });
+
+    document.getElementById("classic-theme-btn")?.addEventListener("click", () => {
+        root.style.setProperty('--primary-color', '#1A4536');
+        root.style.setProperty('--accent-green', '#3fe97d');
+        root.style.setProperty('--accent-saumon', '#FF9999');
+        root.style.setProperty('--secondary-color', '#1B7958');
+        document.getElementById("theme-selector")!.style.display = "none";
+    })
+    
+    document.getElementById("contrast-theme-btn")?.addEventListener("click", () => {
+        root.style.setProperty('--primary-color', '#0E271E');
+        root.style.setProperty('--accent-green', '#DCEA3B');
+        root.style.setProperty('--accent-saumon', '#0E271E');
+        root.style.setProperty('--secondary-color', '#0E271E');
+        document.getElementById("theme-selector")!.style.display = "none";
+    })
+
     boucle();
 }
 
@@ -338,7 +361,6 @@ function openDialog(effet: string) {
 
 
 function closeDialog(effet: string) {
-
     let activeDialog = document.getElementById("dialog-" + effet);
     if (activeDialog) {
         (activeDialog as HTMLDialogElement).close();
