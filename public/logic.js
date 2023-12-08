@@ -165,7 +165,11 @@ function genererAffichageCarte(carte) {
 var div;
 var startX = 0;
 var isClicked = false;
+var index = 0;
 function boucle() {
+    if (index == 0) {
+        carteActuelle = allCartes[0];
+    }
     carteActuelle = carteSuivante();
     if (carteActuelle == null) {
         console.log("Il n'y a plus de cartes candidates.");
@@ -190,6 +194,7 @@ function boucle() {
         // Listen for mousemove events on the document
         startX = event.clientX;
     });
+    index++;
 }
 function delay(ms) {
     return new Promise(function (resolve) { return setTimeout(resolve, ms); });
@@ -278,7 +283,7 @@ function main() {
                 case 1:
                     allCartes = _c.sent();
                     document.addEventListener("mousemove", rotateCard);
-                    document.addEventListener("mouseup", acionCarte);
+                    document.addEventListener("mouseup", actionCarte);
                     root = document.querySelector(':root');
                     document.getElementById("theme-button").addEventListener("click", function () {
                         var val = document.getElementById("theme-selector").style.display;
@@ -331,7 +336,6 @@ function closeDialog(effet) {
         activeDialog.remove();
     }
 }
-<<<<<<< HEAD
 function main() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -347,6 +351,4 @@ function main() {
         });
     });
 }
-=======
->>>>>>> 79da1c1b5633eb075084c5f38e69643e0d26ef76
 main();
