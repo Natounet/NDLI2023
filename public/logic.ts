@@ -55,6 +55,34 @@ class Carte {
                 carteJoues.push(this.id);
             }
 
+            const svgContainerLogement = document.querySelector('.svg-container.logement') as HTMLElement;
+
+            if (svgContainerLogement) {
+                const firstSvg = svgContainerLogement.querySelector('.first') as SVGElement;
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-logement)+"%, 100% "+(100-logement)+"%, 100% 100%, 0 100%)";
+            }
+
+            const svgContainerTransport = document.querySelector('.svg-container.transport') as HTMLElement;
+
+            if (svgContainerTransport) {
+                const firstSvg = svgContainerTransport.querySelector('.first') as SVGElement;
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-transport)+"%, 100% "+(100-transport)+"%, 100% 100%, 0 100%)";
+            }
+
+            const svgContainerIndustrie = document.querySelector('.svg-container.industrie') as HTMLElement;
+
+            if (svgContainerIndustrie) {
+                const firstSvg = svgContainerIndustrie.querySelector('.first') as SVGElement;
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-industrie)+"%, 100% "+(100-industrie)+"%, 100% 100%, 0 100%)";
+            }
+
+            const svgContainerAgriculture = document.querySelector('.svg-container.agriculture') as HTMLElement;
+
+            if (svgContainerAgriculture) {
+                const firstSvg = svgContainerAgriculture.querySelector('.first') as SVGElement;
+                if (firstSvg) firstSvg.style.clipPath = "polygon(0 "+(100-agriculture)+"%, 100% "+(100-agriculture)+"%, 100% 100%, 0 100%)";
+            }
+
             boutonVertRestant -= 1;
         }
     }

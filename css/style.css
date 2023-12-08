@@ -68,6 +68,7 @@ body {
 h1 {
     color: white;
     text-align: center;
+    margin: 1%;
 }
 
 body {
@@ -152,4 +153,58 @@ div.carte_interieur {
 #theme-selector > *:hover {
     background-color: #3fe97d;
     border-radius: 10px;
+.jauge{
+    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.svg-container{
+    text-align: center;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    padding: 1%;
+    border: white solid 5px ;
+}
+
+.svg-container:hover{
+    border: #3fe97d solid 5px;
+    cursor: pointer;
+}
+
+.top-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+.bottom-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    font-weight: bold;
+}
+
+svg{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    fill: none; /* Set fill to none to make the border visible */
+}
+
+svg.first{
+    fill:  #FF9999;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+svg.second{
+    fill: transparent;
 }

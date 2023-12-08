@@ -61,6 +61,30 @@ var Carte = /** @class */ (function () {
                 logement += this.effets.logement;
                 carteJoues.push(this.id);
             }
+            var svgContainerLogement = document.querySelector('.svg-container.logement');
+            if (svgContainerLogement) {
+                var firstSvg = svgContainerLogement.querySelector('.first');
+                if (firstSvg)
+                    firstSvg.style.clipPath = "polygon(0 " + (100 - logement) + "%, 100% " + (100 - logement) + "%, 100% 100%, 0 100%)";
+            }
+            var svgContainerTransport = document.querySelector('.svg-container.transport');
+            if (svgContainerTransport) {
+                var firstSvg = svgContainerTransport.querySelector('.first');
+                if (firstSvg)
+                    firstSvg.style.clipPath = "polygon(0 " + (100 - transport) + "%, 100% " + (100 - transport) + "%, 100% 100%, 0 100%)";
+            }
+            var svgContainerIndustrie = document.querySelector('.svg-container.industrie');
+            if (svgContainerIndustrie) {
+                var firstSvg = svgContainerIndustrie.querySelector('.first');
+                if (firstSvg)
+                    firstSvg.style.clipPath = "polygon(0 " + (100 - industrie) + "%, 100% " + (100 - industrie) + "%, 100% 100%, 0 100%)";
+            }
+            var svgContainerAgriculture = document.querySelector('.svg-container.agriculture');
+            if (svgContainerAgriculture) {
+                var firstSvg = svgContainerAgriculture.querySelector('.first');
+                if (firstSvg)
+                    firstSvg.style.clipPath = "polygon(0 " + (100 - agriculture) + "%, 100% " + (100 - agriculture) + "%, 100% 100%, 0 100%)";
+            }
             boutonVertRestant -= 1;
         }
     };
