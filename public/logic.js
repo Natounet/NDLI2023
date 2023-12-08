@@ -160,7 +160,7 @@ function carteSuivante() {
     return null;
 }
 function genererAffichageCarte(carte) {
-    return "<div class=\"carte\"><h3>".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p>").concat(carte.description, "</p></div></div>");
+    return "<div class=\"carte\"><h2>".concat(carte.nom, "</h2><div class=\"carte_interieur\"><p>").concat(carte.description, "</p></div></div>");
 }
 var div;
 var startX = 0;
@@ -211,7 +211,6 @@ function actionCarte(event) {
                     isClicked = false;
                     direction = endX > startX ? "right" : "left";
                     if (direction == "right") {
-                        console.log(carteActuelle);
                         if (carteActuelle == null) {
                             console.log("Game over, no new cards will be generated.");
                             return [2 /*return*/];
@@ -273,7 +272,84 @@ function rotateCard(event) {
     tkt.style.transition = "none";
     tkt.style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
 }
+function greenButton(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var card;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (carteActuelle == null) {
+                        console.log("Game over, no new cards will be generated.");
+                        return [2 /*return*/];
+                    }
+                    else {
+                        carteActuelle.boutonVert();
+                    }
+                    card = div.getElementsByTagName("div")[0];
+                    card.style.transition =
+                        "transform 1s ease-out, opacity 1s ease-out";
+                    card.style.transform = "translateX(400%)";
+                    card.style.opacity = "0";
+                    return [4 /*yield*/, delay(1000)];
+                case 1:
+                    _a.sent();
+                    div.remove();
+                    if (!partieTermine()) {
+                        boucle();
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function redButton(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var card;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (carteActuelle == null) {
+                        console.log("Game over, no new cards will be generated.");
+                        return [2 /*return*/];
+                    }
+                    else {
+                        carteActuelle.boutonRouge();
+                    } // add translation to go outside of the screen
+                    card = div.getElementsByTagName("div")[0];
+                    card.style.transition =
+                        "transform 1s ease-out, opacity 1s ease-out";
+                    card.style.transform = "translateX(-400%)";
+                    card.style.opacity = "0";
+                    return [4 /*yield*/, delay(1000)];
+                case 1:
+                    _a.sent();
+                    div.remove();
+                    if (!partieTermine()) {
+                        boucle();
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function keyboardHandler(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            // Arrow and D and Q
+            if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "q") {
+                if (event.key == "ArrowLeft" || event.key == "q") {
+                    redButton(event);
+                }
+                else {
+                    greenButton(event);
+                }
+            }
+            return [2 /*return*/];
+        });
+    });
+}
 function main() {
+<<<<<<< HEAD
     var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function () {
         var root;
@@ -282,6 +358,17 @@ function main() {
                 case 0: return [4 /*yield*/, creerCarte()];
                 case 1:
                     allCartes = _d.sent();
+=======
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        var root;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, creerCarte()];
+                case 1:
+                    allCartes = _b.sent();
+                    // Cards listeners
+>>>>>>> a8c1e20691fd483366b31325d70564372e52d93e
                     document.addEventListener("mousemove", rotateCard);
                     document.addEventListener("mouseup", actionCarte);
                     root = document.querySelector(':root');
@@ -289,6 +376,7 @@ function main() {
                         var val = document.getElementById("theme-selector").style.display;
                         document.getElementById("theme-selector").style.display = val == "none" ? "block" : "none";
                     });
+                    // Theme buttons listeners
                     (_a = document.getElementById("classic-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#1A4536');
                         root.style.setProperty('--accent-green', '#3fe97d');
@@ -302,6 +390,7 @@ function main() {
                         }
                         document.getElementById("theme-selector").style.display = "none";
                     });
+<<<<<<< HEAD
                     (_b = document.getElementById("contrast-theme-btn")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#0E271E');
                         root.style.setProperty('--accent-green', '#DCEA3B');
@@ -330,6 +419,13 @@ function main() {
                         document.body.appendChild(audio);
                         document.getElementById("theme-selector").style.display = "none";
                     });
+=======
+                    // Buttons listenerss
+                    document.getElementsByClassName("correctButton")[0].addEventListener("mouseup", greenButton);
+                    document.getElementsByClassName("wrongButton")[0].addEventListener("mouseup", redButton);
+                    // Keyboard listeners
+                    document.addEventListener("keydown", keyboardHandler);
+>>>>>>> a8c1e20691fd483366b31325d70564372e52d93e
                     boucle();
                     return [2 /*return*/];
             }
@@ -353,7 +449,6 @@ function openDialog(effet) {
     dialogueDiv.appendChild(closeButton);
     dialogueDiv.appendChild(content);
     document.body.appendChild(dialogueDiv);
-    console.log('test');
     dialogueDiv.showModal();
 }
 function closeDialog(effet) {
