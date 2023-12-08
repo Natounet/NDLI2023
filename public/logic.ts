@@ -299,9 +299,10 @@ function rotateCard(event: MouseEvent) {
 
 
 
-    div.getElementsByTagName(
-        "div"
-    )[0].style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
+    let tkt = div.getElementsByTagName("div")[0];
+    tkt.style.transition = "none";
+    tkt.style.transform = `translateX(-50%) rotate(${rotationAngle}deg)`;
+
 }
 
 async function main() {
@@ -311,39 +312,6 @@ async function main() {
     document.addEventListener("mouseup", acionCarte) ;
 
     boucle();
-}
-
-function openDialog(effet: string) {
-    let dialogueDiv = document.createElement("dialog");
-    dialogueDiv.classList.add("dialog-container");
-    dialogueDiv.id = "dialog-" + effet;
-
-    let content = document.createElement("div")
-    content.textContent = effet;
-
-    let closeButton = document.createElement("button");
-    closeButton.classList.add("dialog-button");
-    closeButton.onclick = function () {
-        closeDialog(effet);
-    };
-
-    let svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-circle"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>`;
-    closeButton.innerHTML = (svgString);
-    dialogueDiv.appendChild(closeButton);
-    dialogueDiv.appendChild(content);
-    document.body.appendChild(dialogueDiv);
-    console.log('test');
-    (dialogueDiv as HTMLDialogElement).showModal();
-}
-
-
-function closeDialog(effet: string) {
-
-    let activeDialog = document.getElementById("dialog-" + effet);
-    if (activeDialog) {
-        (activeDialog as HTMLDialogElement).close();
-        activeDialog.remove();
-    }
 }
 
 main();
