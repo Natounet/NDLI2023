@@ -268,6 +268,42 @@ function rotateCard(event) {
     tkt.style.transition = "none";
     tkt.style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
 }
+function main() {
+    var _a, _b;
+    return __awaiter(this, void 0, void 0, function () {
+        var root;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0: return [4 /*yield*/, creerCarte()];
+                case 1:
+                    allCartes = _c.sent();
+                    document.addEventListener("mousemove", rotateCard);
+                    document.addEventListener("mouseup", acionCarte);
+                    root = document.querySelector(':root');
+                    document.getElementById("theme-button").addEventListener("click", function () {
+                        var val = document.getElementById("theme-selector").style.display;
+                        document.getElementById("theme-selector").style.display = val == "none" ? "block" : "none";
+                    });
+                    (_a = document.getElementById("classic-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+                        root.style.setProperty('--primary-color', '#1A4536');
+                        root.style.setProperty('--accent-green', '#3fe97d');
+                        root.style.setProperty('--accent-saumon', '#FF9999');
+                        root.style.setProperty('--secondary-color', '#1B7958');
+                        document.getElementById("theme-selector").style.display = "none";
+                    });
+                    (_b = document.getElementById("contrast-theme-btn")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
+                        root.style.setProperty('--primary-color', '#0E271E');
+                        root.style.setProperty('--accent-green', '#DCEA3B');
+                        root.style.setProperty('--accent-saumon', '#0E271E');
+                        root.style.setProperty('--secondary-color', '#0E271E');
+                        document.getElementById("theme-selector").style.display = "none";
+                    });
+                    boucle();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 function openDialog(effet) {
     var dialogueDiv = document.createElement("dialog");
     dialogueDiv.classList.add("dialog-container");
@@ -295,6 +331,7 @@ function closeDialog(effet) {
         activeDialog.remove();
     }
 }
+<<<<<<< HEAD
 function main() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -310,4 +347,6 @@ function main() {
         });
     });
 }
+=======
+>>>>>>> 79da1c1b5633eb075084c5f38e69643e0d26ef76
 main();

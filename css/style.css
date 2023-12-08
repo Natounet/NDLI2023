@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #1A4536;
+    --accent-green: #3fe97d;
+    --accent-saumon: #FF9999;
+    --secondary-color: #1B7958;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +13,7 @@
 }
 
 body {
-    background-color: #1A4536;
+    background-color: var(--primary-color);
     /*background: linear-gradient(45deg, red, purple);*/
     height: 100vh;
     width: 100vw;
@@ -21,7 +28,7 @@ body {
     transform:  rotate(-30deg) scale(5);
 }
 #image-fond-industrie > * {
-    stroke: #1B7958;
+    stroke: var(--secondary-color);
     fill: none;
 }
 
@@ -33,8 +40,8 @@ body {
     transform:  rotate(-25deg) scale(5);
 }
 #image-fond-agriculture > * {
-    fill: #1B7958;
-    stroke: #1A4536;
+    fill: var(--secondary-color);
+    stroke: var(--primary-color);
     stroke-width: 2;
 }
 
@@ -47,8 +54,8 @@ body {
     z-index: 1;
 }
 #image-fond-transports > * {
-    fill: #1B7958;
-    stroke: #1A4536;
+    fill: var(--secondary-color);
+    stroke: var(--primary-color);
     stroke-width: 2;
 }
 
@@ -61,7 +68,7 @@ body {
     z-index: 0;
 }
 #image-fond-logement > * {
-    stroke: #1B7958;
+    stroke: var(--secondary-color);
     fill: none;
 }
 
@@ -108,7 +115,7 @@ div.carte_interieur {
     border-radius: 10px;
     font-weight: bold;
     font-size: 1.2em;
-    background-color: #3fe97d;
+    background-color: var(--accent-green);
     overflow-wrap: break-word;
 }
 
@@ -143,13 +150,13 @@ div.carte_interieur {
     transition: fill 0.1s ease-out;
 }
 #theme-button:hover {
-    background-color: #3fe97d;
+    background-color: var(--accent-green);
 }
 #theme-selector {
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
-    border: 3px solid #1A4536;
+    border: 3px solid var(--primary-color);
 }
 
 
@@ -161,7 +168,7 @@ div.carte_interieur {
     transition: background-color 0.2s ease-out;
 }
 #theme-selector > *:hover {
-    background-color: #3fe97d;
+    background-color: var(--accent-green);
     border-radius: 10px;
 
 }
@@ -182,11 +189,11 @@ div.carte_interieur {
     border-radius: 20px;
     padding: 1%;
     border: white solid 5px ;
-    z-index: ;
+    z-index: 99999;
 }
 
 .svg-container:hover{
-    border: #3fe97d solid 5px;
+    border: var(--accent-green) solid 5px;
     cursor: pointer;
 }
 
@@ -219,7 +226,7 @@ svg.first{
     width: 100px;
     height: 100px;
     position: absolute;
-    fill:  #FF9999;
+    fill:  var(--accent-saumon);
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
 }
 
