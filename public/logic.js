@@ -265,7 +265,8 @@ function openDialog(effet) {
     dialogueDiv.classList.add("dialog-container");
     dialogueDiv.id = "dialog-" + effet;
     var content = document.createElement("div");
-    content.textContent = effet;
+    var jsonObject = JSON.parse('{"industrie": "Indudu", "agriculture": "agrigri", "transport": "trantran", "logement": "lolo"}');
+    content.textContent = jsonObject[effet];
     var closeButton = document.createElement("button");
     closeButton.classList.add("dialog-button");
     closeButton.onclick = function () {
