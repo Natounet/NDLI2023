@@ -176,7 +176,7 @@ function carteSuivante(): Carte | null {
 }
 
 function genererAffichageCarte(carte: Carte): string {
-    return `<div class="carte"><h3>${carte.nom}</h3><div class="carte_interieur"><p>${carte.description}</p></div></div>`;
+    return `<div class="carte"><h2>${carte.nom}</h2><div class="carte_interieur"><p>${carte.description}</p></div></div>`;
 }
 
 let div;

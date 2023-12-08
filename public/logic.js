@@ -160,7 +160,7 @@ function carteSuivante() {
     return null;
 }
 function genererAffichageCarte(carte) {
-    return "<div class=\"carte\"><h3>".concat(carte.nom, "</h3><div class=\"carte_interieur\"><p>").concat(carte.description, "</p></div></div>");
+    return "<div class=\"carte\"><h2>".concat(carte.nom, "</h2><div class=\"carte_interieur\"><p>").concat(carte.description, "</p></div></div>");
 }
 var div;
 var startX = 0;
