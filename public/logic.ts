@@ -1,7 +1,7 @@
-let industrie = 0;
-let transport = 0;
-let agriculture = 0;
-let logement = 0;
+let industrie = 50;
+let transport = 50;
+let agriculture = 50;
+let logement = 50;
 
 let carteJoues: number[] = [];
 let carteActuelle: Carte;
@@ -381,15 +381,6 @@ function closeDialog(effet: string) {
         (activeDialog as HTMLDialogElement).close();
         activeDialog.remove();
     }
-}
-
-async function main() {
-    allCartes = await creerCarte();
-
-    document.addEventListener("mousemove", rotateCard);
-    document.addEventListener("mouseup", actionCarte) ;
-
-    boucle();
 }
 
 main();
