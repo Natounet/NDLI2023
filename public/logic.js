@@ -165,7 +165,11 @@ function genererAffichageCarte(carte) {
 var div;
 var startX = 0;
 var isClicked = false;
+var index = 0;
 function boucle() {
+    if (index == 0) {
+        carteActuelle = allCartes[0];
+    }
     carteActuelle = carteSuivante();
     if (carteActuelle == null) {
         console.log("Il n'y a plus de cartes candidates.");
@@ -190,6 +194,7 @@ function boucle() {
         // Listen for mousemove events on the document
         startX = event.clientX;
     });
+    index++;
 }
 function delay(ms) {
     return new Promise(function (resolve) { return setTimeout(resolve, ms); });
