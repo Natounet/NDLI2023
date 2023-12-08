@@ -124,21 +124,20 @@ function creerCarte() {
                 case 2:
                     data = _a.sent();
                     cartes = Object.values(data);
-                    cartes.forEach(function (obj) { return allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info)); });
+                    cartes.forEach(function (obj) {
+                        return allCartes.push(new Carte(obj.id, obj.nom, obj.description, obj.effets, obj.prerequis, obj.source, obj.info));
+                    });
                     return [2 /*return*/, allCartes];
             }
         });
     });
 }
 function partieTermine() {
-    if (industrie < 100 && transport < 100 && agriculture < 100 && logement < 100) {
-        if (carteJoues.length != allCartes.length) {
-            console.log("Partie non terminé");
-            return false;
-        }
-    }
-    console.log("Partie terminé");
-    return true;
+    return ((industrie > 100 ||
+        transport > 100 ||
+        agriculture > 100 ||
+        logement > 100) &&
+        carteJoues.length <= allCartes.length);
 }
 function carteSuivante() {
     // On cherche a chercher une carte qui n'a pas été joué et dont les prérequis sont satisfait
@@ -159,34 +158,35 @@ function main() {
         function boucle() {
             var carteActuelle = carteSuivante();
             var cartehtml = genererAffichageCarte(carteActuelle);
-            var div = document.createElement('div');
+            var div = document.createElement("div");
             div.innerHTML = cartehtml;
             document.body.appendChild(div);
-            div.addEventListener('mousedown', function (event) {
+            div.addEventListener("mousedown", function (event) {
                 // Listen for mousemove events on the document
-                document.addEventListener('mousemove', rotateCard);
+                document.addEventListener("mousemove", rotateCard);
             });
             // Listen for mouseup events on the document
             var startX;
-            document.addEventListener('mousedown', function (event) {
+            document.addEventListener("mousedown", function (event) {
                 startX = event.clientX;
                 // Listen for mousemove events on the document
-                document.addEventListener('mousemove', rotateCard);
+                document.addEventListener("mousemove", rotateCard);
             });
-            document.addEventListener('mouseup', function (event) {
+            document.addEventListener("mouseup", function (event) {
                 // Remove the mousemove event listener
-                document.removeEventListener('mousemove', rotateCard);
+                document.removeEventListener("mousemove", rotateCard);
                 // Check if the card is dragged to the left or right
                 var endX = event.clientX;
-                var direction = endX > startX ? 'right' : 'left';
-                if (direction == 'right') {
+                var direction = endX > startX ? "right" : "left";
+                if (direction == "right") {
                     console.log(carteActuelle);
                     carteActuelle.boutonVert();
                     // add translation to go outside of the screen
                     var card = div.getElementsByTagName("div")[0];
-                    card.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+                    card.style.transition =
+                        "transform 1s ease-out, opacity 1s ease-out";
                     card.style.transform = "translateX(400%)";
-                    card.style.opacity = '0';
+                    card.style.opacity = "0";
                     // remove the card from the DOM after the animation is finished
                     setTimeout(function () {
                         div.remove();
@@ -196,9 +196,10 @@ function main() {
                     carteActuelle.boutonRouge();
                     // add translation to go outside of the screen
                     var card = div.getElementsByTagName("div")[0];
-                    card.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+                    card.style.transition =
+                        "transform 1s ease-out, opacity 1s ease-out";
                     card.style.transform = "translateX(-400%)";
-                    card.style.opacity = '0';
+                    card.style.opacity = "0";
                     // remove the card from the DOM after the animation is finished
                     setTimeout(function () {
                         div.remove();
@@ -210,7 +211,9 @@ function main() {
             });
             function rotateCard(event) {
                 // Calculate the rotation angle based on the mouse position
-                var rotationAngle = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2) * 30; // Adjust the divisor to change the rotation speed
+                var rotationAngle = ((event.clientX - window.innerWidth / 2) /
+                    (window.innerWidth / 2)) *
+                    30; // Adjust the divisor to change the rotation speed
                 // Rotate the card
                 div.getElementsByTagName("div")[0].style.transform = "translateX(-50%) rotate(".concat(rotationAngle, "deg)");
             }
