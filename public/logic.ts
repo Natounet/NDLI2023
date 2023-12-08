@@ -109,6 +109,7 @@ class Carte {
 
             carteJoues.push(this.id);
         }
+        
     }
 
     estJouable(): boolean {
@@ -419,7 +420,7 @@ async function main() {
     // Theme buttons listeners
     document.getElementById("classic-theme-btn")?.addEventListener("click", () => {
         root.style.setProperty('--primary-color', '#1A4536');
-        root.style.setProperty('--accent-green', '#3fe97d');
+        root.style.setProperty('--acce>nt-green', '#3fe97d');
         root.style.setProperty('--accent-saumon', '#FF9999');
         root.style.setProperty('--secondary-color', '#1B7958');
         document.body.style.background = "var(--primary-color)";

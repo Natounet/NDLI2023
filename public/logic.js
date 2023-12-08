@@ -401,7 +401,7 @@ function main() {
                     // Theme buttons listeners
                     (_a = document.getElementById("classic-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
                         root.style.setProperty('--primary-color', '#1A4536');
-                        root.style.setProperty('--accent-green', '#3fe97d');
+                        root.style.setProperty('--acce>nt-green', '#3fe97d');
                         root.style.setProperty('--accent-saumon', '#FF9999');
                         root.style.setProperty('--secondary-color', '#1B7958');
                         document.body.style.background = "var(--primary-color)";
